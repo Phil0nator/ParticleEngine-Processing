@@ -79,8 +79,8 @@ public class ParticleDrawable {
             parent.image(img,x,y);
             return;
         }
-        shape.fill(c);
-        shape.stroke(perimc);
+        shape.setFill(c);
+        shape.setStroke(perimc);
         if(d!=null){
             d.drawParticle(x,y,l);
             return;

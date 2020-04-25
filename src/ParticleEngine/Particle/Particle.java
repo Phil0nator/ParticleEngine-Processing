@@ -1,6 +1,7 @@
 package ParticleEngine.Particle;
 
 import ParticleEngine.Behavior.ParticleBehavior;
+import ParticleEngine.Behavior.ParticleInteraction;
 import ParticleEngine.ParticleEngine;
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -74,12 +75,37 @@ public class Particle {
         }
     }
 
-    public final void update(ParticleBehavior[] behaviors){
+    public final void update(ParticleBehavior[] behaviors, ParticleInteraction[] is){
         try {
             applyBehaviors(behaviors);
+            applyInteractions(is);
             draw();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+    public final void applyInteractions(ParticleInteraction[] is){
+        for(ParticleInteraction i : is){
+            applyInteraction(i);
+        }
+    }
+
+    public void applyInteraction(ParticleInteraction i){
+        switch (i){
+            case None:
+                return;
+            case Particle_Window_Collision:
+                if(loc.x>parent.bounds[0]||loc.x<0){
+                    vel.x*=-1;
+                }
+                if(loc.y > parent.bounds[1]||loc.y<0){
+                    vel.y*=-1;
+                }
+                return;
+            default:
+                return;
+        }
+    }
+
 }

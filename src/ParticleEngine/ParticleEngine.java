@@ -98,6 +98,10 @@ public class ParticleEngine {
 		iv = new PVector(x,y);
 	}
 
+	public final void setInitialBehaviorArg(float val){
+		initialBehaviorArg=val;
+	}
+
 	private Particle createParticle(){
 		Particle np = new Particle(parent,0,0,0,0);
 		switch (initialBehavior){
@@ -147,7 +151,7 @@ public class ParticleEngine {
 			}
 
 			for (Particle p : particles) {
-				p.update(behaviors);
+				p.update(behaviors, interactions);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
