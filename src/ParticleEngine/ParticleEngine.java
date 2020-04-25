@@ -13,9 +13,19 @@ import javax.crypto.interfaces.PBEKey;
 import java.util.ArrayList;
 
 /**
+ *	The ParticleEngine class wraps together ParticleDrawable, Particle, and applies
+ *  many properties.
+ * @see ParticleDrawable
+ *
+ *  Properties are defined in both specific numbers, and enums
+ *
+ * @see ParticleBehavior
+ * @see ParticleInteraction
+ * @see GenerationType
+ *
+ *
  *
  */
-
 public class ParticleEngine {
 
 	/* PROCESSING STUFF */
@@ -57,7 +67,12 @@ public class ParticleEngine {
 	private boolean activated = false;
 	private PVector iv = new PVector(0,0);
 	private ArrayList<Particle> particles = new ArrayList<Particle>(0);
+	private float particleSpeedFactor = 1.f;
+	private float randomNoiseDifferencial = 3.7f;
 
+
+
+	private float noiseMapFactor = 5.f;
 	/**
 	 * Setup the properties of the engine
 	 * @param behaviors	A list of behaviors the particles will follow
@@ -81,25 +96,93 @@ public class ParticleEngine {
 		this.bounds[1] = parent.height;
 	}
 
+	/**
+	 * Set the bounds of the system.
+	 * When using ParticleInteraction#Particle_Window_Collision this limits where they can go
+	 * Otherwise, they will be able to leave these bounds
+	 * @param width width of container
+	 * @param height height of container
+	 */
 	public final void setBounds(int width, int height){
 		bounds[0]=width;
 		bounds[1]=height;
 	}
 
+	/**
+	 * Setup how particles will behave when spawned
+	 *
+	 * More information can be specified in ParticleEngine#setInitialBehaviorArg(float)
+	 * @param initialBehavior InitialBehavior enum
+	 * @see InitialBehavior
+	 * @see ParticleEngine#setInitialBehaviorArg(float)
+	 */
 	public final void setInitialBehavior(InitialBehavior initialBehavior){
 		this.initialBehavior=initialBehavior;
 	}
 
+	/**
+	 * Determine the origin of the system
+	 * @param x coord
+	 * @param y coord
+	 */
 	public final void setOrigin(int x, int y){
 		origin = new PVector(x,y);
 	}
 
+	/**
+	 * Determine the specified initial velocity of particles
+	 * (Not normalized)
+	 *
+	 * This will have no affect unless you are using Exact_IV or Randomly_Varying_IV InitialBehaviors
+	 *
+	 * @param x velocity x
+	 * @param y velocity y
+	 * @see InitialBehavior
+	 * @see ParticleEngine#setInitialBehavior(InitialBehavior)
+	 *
+	 */
 	public final void setInitialVelocity(int x, int y){
 		iv = new PVector(x,y);
 	}
 
+	/**
+	 * Set more specific information about how particles spawn
+	 * @param val value
+	 * @see InitialBehavior
+	 */
 	public final void setInitialBehaviorArg(float val){
 		initialBehaviorArg=val;
+	}
+
+	/**
+	 * Slow down or speed up particles.
+	 *
+	 *
+	 * Ex: 0 = stopped
+	 * Ex: 1 = normal
+	 * Ex: .5 = 50% speed
+	 *
+	 * @param f value
+	 */
+	public final void applySpeedFactor(float f){
+		particleSpeedFactor=f;
+	}
+
+	/**
+	 * Set the amount of difference between particles following noise patterns.
+	 * Should be between 5 and 20 in most cases
+	 * @param f value
+	 */
+	public final void setRandomNoiseDifferencial(float f){
+		randomNoiseDifferencial=f;
+	}
+
+	/**
+	 * Determines the size to which the noise values are mapped
+	 * @param noiseMapFactor factor
+	 */
+	public final void setNoiseMapFactor(float noiseMapFactor) {
+		this.noiseMapFactor = noiseMapFactor;
 	}
 
 	private Particle createParticle(){
@@ -124,10 +207,16 @@ public class ParticleEngine {
 				np = new Particle(parent,(int)origin.x,(int)origin.y,0,0);
 		}
 		np.parent = this;
+		np.applySpeedFactor(particleSpeedFactor);
+		np.createRandomSeed(randomNoiseDifferencial);
+		np.mapfac = noiseMapFactor;
 		return np;
 
 	}
 
+	/**
+	 * Begin particle production
+	 */
 	public final void activate(){
 		activated = true;
 		if(gen == GenerationType.AtOnce){
@@ -141,6 +230,10 @@ public class ParticleEngine {
 
 	}
 
+	/**
+	 * The Update method must always be ran in your draw method. This is where particles are updated,
+	 * and drawn to the screen
+	 */
 	public final void update(){
 		try {
 			if (!activated) return;
@@ -157,6 +250,21 @@ public class ParticleEngine {
 			e.printStackTrace();
 		}
 
+	}
+
+	/**
+	 * This is used to create a batch of size amt of particles.
+	 * Only with GenerationType#OnEvent
+	 * @param amt number of particles
+	 * @see GenerationType
+	 */
+	public final void createBatch(int amt){
+
+		for(int i = 0 ; i < amt;i++){
+			if(particles.size()>count)return;
+			particles.add(createParticle());
+
+		}
 	}
 
 }

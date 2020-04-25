@@ -12,10 +12,11 @@ public class Particle {
 
     PApplet applet;
     public ParticleEngine parent;
-
+    float acceloration = 1.f;
     PVector loc;
     PVector vel;
-
+    float randomNoiseSeed = 1;
+    public float mapfac = 5.f;
     int life = 0;
 
     public Particle(PApplet a, int x, int y, float velx, float vely){
@@ -29,11 +30,31 @@ public class Particle {
         life++;
     }
 
+    public void applySpeedFactor(float f){
+        acceloration=f;
+    }
+
+    public void createRandomSeed(float r){
+        randomNoiseSeed = applet.random(0,r);
+    }
+
     private void normal(){
 
         vel = new PVector(vel.x,vel.y+1);
-        loc.add(vel);
+        applyVelocity();
 
+    }
+
+    private float getNoiseX(){
+        return (applet.noise(life+randomNoiseSeed)-0.5f)*mapfac;
+    }
+    private float getNoiseY(){
+        return (applet.noise((float)(life/5)+randomNoiseSeed)-0.5f)*mapfac;
+    }
+
+
+    private void applyVelocity(){
+        loc.add(vel.copy().mult(acceloration));
     }
 
     private void applyBehavior(ParticleBehavior b){
@@ -48,20 +69,21 @@ public class Particle {
                 loc = new PVector(applet.random(0,parent.bounds[0]),applet.random(0,parent.bounds[1]));
                 return;
             case NormalWithoutGravity:
-                loc.add(vel);
-                return;
-            case NormalWithFriction:
-                normal();
-                vel.sub(.1f,.1f);
+                applyVelocity();
                 return;
             case NormalPhysics_WithNoiseOffset:
                 normal();
-                vel.add(new PVector(applet.noise(life)-0.5f,applet.noise(life)-0.5f));
+                vel.add(new PVector(getNoiseX(),getNoiseY()));
                 return;
             case Particle_Smooth_Random:
-                vel = new PVector(applet.noise(life)-0.5f,applet.noise(life)-0.5f);
-                loc.add(vel);
+                vel.add(getNoiseX(),getNoiseY());
+                applyVelocity();
                 return;
+
+            case Friction:
+                vel.mult(0.9f);
+                return;
+
             default:
                 normal();
 

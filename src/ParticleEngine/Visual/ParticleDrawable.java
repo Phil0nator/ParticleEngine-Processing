@@ -1,10 +1,35 @@
 package ParticleEngine.Visual;
 
 
+import ParticleEngine.Behavior.GenerationType;
+import ParticleEngine.Behavior.ParticleBehavior;
+import ParticleEngine.Behavior.ParticleInteraction;
 import ParticleEngine.Visual.properties.ParticleLifeEffect;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PShape;
+
+
+/**
+ * A wrapper to define how particles of a given engine will be drawn.
+ * There are three options:
+ *      PShape
+ *          ex: rect, circle, etc...
+ *      PImage
+ *          anything you can load as an image
+ *      CustomParticleDraw
+ *          you can write your own draw method using int x, int y, int life
+ *          as parameters
+ *
+ * @see PShape
+ * @see PImage
+ * @see CustomParticleDraw
+ *
+ *
+ * @see ParticleEngine.ParticleEngine
+ * @see ParticleEngine.ParticleEngine#setup(ParticleBehavior[], ParticleInteraction[], GenerationType, int, ParticleDrawable)
+ *
+ */
 
 public class ParticleDrawable {
 
@@ -15,28 +40,68 @@ public class ParticleDrawable {
     PApplet parent;
     int c;
     int perimc;
+
+    /**
+     * A constructor for a ParticleDrawable using a PShape
+     * @param p parent
+     * @param shape the PShape
+     */
     public ParticleDrawable(PApplet p, PShape shape){
         parent=p;
         this.shape=shape;
     }
+
+    /**
+     * A constructor for a ParticleDrawable using an image
+     * @param p parent
+     * @param i the PImage to draw
+     */
     public ParticleDrawable(PApplet p, PImage i){
         parent=p;
         img = i;
     }
+
+    /**
+     * A constructor for a ParticleDrawable using custom methods
+     * @param p parent
+     * @param dr Your own CustomParticleDraw object with the overridden method
+     * @see CustomParticleDraw
+     */
     public ParticleDrawable(PApplet p, CustomParticleDraw dr){
         parent=p;
         d=dr;
     }
+
+    /**
+     * Set the visual life effect for the drawer
+     * @param lf life effect
+     * @see ParticleLifeEffect
+     */
     public void setLifeEffect(ParticleLifeEffect[] lf){
         plf=lf;
     }
+
     public void setParent(PApplet p){
         parent=p;
-        c = parent.color(0,0,0);
+        c = parent.color(255,0,255);
     }
+
+    /**
+     * Set fill color
+     * (Only for drawables using a PShape)
+     * @param c new color
+     * @see PApplet#color
+     */
     public void fill(int c){
         this.c=c;
     }
+
+    /**
+     * Set stroke color
+     * (Only for drawables using a PShape)
+     * @param c new color
+     * @see PApplet#color
+     */
     public void stroke(int c){
         this.perimc=c;
     }
@@ -70,6 +135,12 @@ public class ParticleDrawable {
         }
     }
 
+    /**
+     * Draw the particle
+     * @param x coord
+     * @param y coord
+     * @param l frames
+     */
     public void draw(int x, int y, int l){
         for(ParticleLifeEffect p: plf){
             applyLE(l, p);
@@ -87,6 +158,8 @@ public class ParticleDrawable {
         }
 
         if(shape!=null){
+            parent.fill(c);
+            parent.stroke(perimc);
             parent.shape(shape,x,y);
         }
     }
