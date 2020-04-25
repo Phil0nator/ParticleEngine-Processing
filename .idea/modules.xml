@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ParticleEngine-Processing.iml" filepath="$PROJECT_DIR$/ParticleEngine-Processing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParticleEngineProcessing.iml" filepath="$PROJECT_DIR$/ParticleEngineProcessing.iml" />
     </modules>
   </component>
 </project>
