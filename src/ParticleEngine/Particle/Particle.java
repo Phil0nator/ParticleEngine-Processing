@@ -7,6 +7,8 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 import static java.lang.Math.random;
+import static processing.core.PApplet.dist;
+import static processing.core.PApplet.sqrt;
 
 public class Particle {
 
@@ -17,7 +19,10 @@ public class Particle {
     PVector vel;
     float randomNoiseSeed = 1;
     public float mapfac = 5.f;
-    int life = 0;
+    public int life = 0;
+
+
+
 
     public Particle(PApplet a, int x, int y, float velx, float vely){
         loc = new PVector(x,y);
@@ -97,6 +102,18 @@ public class Particle {
         }
     }
 
+    public final PVector updateforcache(ParticleBehavior[] behaviors, ParticleInteraction[] is){
+        try {
+            applyBehaviors(behaviors);
+            applyInteractions(is);
+            life++;
+            return loc;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new PVector(-1,-1);
+    }
+
     public final void update(ParticleBehavior[] behaviors, ParticleInteraction[] is){
         try {
             applyBehaviors(behaviors);
@@ -125,6 +142,15 @@ public class Particle {
                     vel.y*=-1;
                 }
                 return;
+            case InterParticle_Collision:
+                for(Particle p: parent.particles){
+                    if(dist(loc.x,loc.y,p.loc.x,p.loc.y)<sqrt((parent.drawer.w*parent.drawer.w)+(parent.drawer.h*parent.drawer.h))){
+                        vel.add(p.vel);
+                    }
+                }
+                return;
+
+
             default:
                 return;
         }

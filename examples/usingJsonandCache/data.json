@@ -1,0 +1,22 @@
+{
+
+"setup":{
+
+	"behaviors":["Particle_Smooth_Random"],
+	"interactions":[Particle_Window_Collision],
+	"gentype": "AtOnce",
+	"number": 300
+},
+"args":{
+
+	"initial":"Explosive",
+	"initialArg":100,
+	"origin":[350,350],
+	"speed":0.05,
+	"bounds":[700,700],
+	"maxlife":255,
+
+}
+
+
+}

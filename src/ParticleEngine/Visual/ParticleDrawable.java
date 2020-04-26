@@ -6,8 +6,11 @@ import ParticleEngine.Behavior.ParticleBehavior;
 import ParticleEngine.Behavior.ParticleInteraction;
 import ParticleEngine.Visual.properties.ParticleLifeEffect;
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PShape;
+
+import static processing.core.PApplet.abs;
 
 
 /**
@@ -33,22 +36,37 @@ import processing.core.PShape;
 
 public class ParticleDrawable {
 
-    PShape shape;
+    Shape shape;
     PImage img;
     CustomParticleDraw d;
-    ParticleLifeEffect[] plf = null;
+    ParticleLifeEffect[] plf = {};
     PApplet parent;
     int c;
+    float ogr;
+    float ogg;
+    float ogb;
     int perimc;
 
+    public int w;
+    public int h;
+    private static int c(int v){
+        return v < 1 ? 1 : (v >= 255 ? 254 : v);
+    }
+    private static int c(float v){
+        return c((int)v);
+    }
     /**
      * A constructor for a ParticleDrawable using a PShape
      * @param p parent
-     * @param shape the PShape
+     * @param shape the Shape
+     * @param p1 width
+     * @param p2 height
      */
-    public ParticleDrawable(PApplet p, PShape shape){
+    public ParticleDrawable(PApplet p, Shape shape, int p1, int p2){
         parent=p;
         this.shape=shape;
+        w=p1;
+        h=p2;
     }
 
     /**
@@ -59,6 +77,8 @@ public class ParticleDrawable {
     public ParticleDrawable(PApplet p, PImage i){
         parent=p;
         img = i;
+        w = i.width;
+        h = i.height;
     }
 
     /**
@@ -70,6 +90,7 @@ public class ParticleDrawable {
     public ParticleDrawable(PApplet p, CustomParticleDraw dr){
         parent=p;
         d=dr;
+
     }
 
     /**
@@ -94,6 +115,9 @@ public class ParticleDrawable {
      */
     public void fill(int c){
         this.c=c;
+        ogr = parent.red(c);
+        ogg = parent.green(c);
+        ogb = parent.blue(c);
     }
 
     /**
@@ -110,28 +134,28 @@ public class ParticleDrawable {
         if(effect == null)return;
         switch (effect){
             case Negativealpha:
-                c = parent.color(parent.red(c),parent.green(c),parent.blue(c),parent.alpha(c)/life);
+                c = parent.color(parent.red(c),parent.green(c),parent.blue(c),c(255-life));
                 return;
             case Positivealpha:
-                c = parent.color(parent.red(c),parent.green(c),parent.blue(c),parent.alpha(c)+life);
+                c = parent.color(parent.red(c),parent.green(c),parent.blue(c),c(life));
                 return;
             case Negativered:
-                c = parent.color(parent.red(c)/life,parent.green(c),parent.blue(c),parent.alpha(c));
+                c = parent.color(c(ogr-life),parent.green(c),parent.blue(c),parent.alpha(c));
                 return;
             case Positivered:
-                c = parent.color(parent.red(c)+life,parent.green(c),parent.blue(c),parent.alpha(c));
+                c = parent.color(c(ogr+life),parent.green(c),parent.blue(c),parent.alpha(c));
                 return;
             case Negativegreen:
-                c = parent.color(parent.red(c),parent.green(c)/life,parent.blue(c),parent.alpha(c));
+                c = parent.color(parent.red(c),c(ogg-life),parent.blue(c),parent.alpha(c));
                 return;
             case Positivegreen:
-                c = parent.color(parent.red(c),parent.green(c)+life,parent.blue(c),parent.alpha(c));
+                c = parent.color(parent.red(c),c(ogg+life),parent.blue(c),parent.alpha(c));
                 return;
             case Negativeblue:
-                c = parent.color(parent.red(c),parent.green(c),parent.blue(c)/life,parent.alpha(c));
+                c = parent.color(parent.red(c),parent.green(c),c(ogb-life),parent.alpha(c));
                 return;
             case Positiveblue:
-                c = parent.color(parent.red(c),parent.green(c),parent.blue(c)+life,parent.alpha(c));
+                c = parent.color(parent.red(c),parent.green(c),c(ogb+life),parent.alpha(c));
         }
     }
 
@@ -142,16 +166,18 @@ public class ParticleDrawable {
      * @param l frames
      */
     public void draw(int x, int y, int l){
+        if(parent.alpha(c)==0){return;}
         for(ParticleLifeEffect p: plf){
             applyLE(l, p);
         }
+
         if(img!=null){
             parent.tint(c);
             parent.image(img,x,y);
+            parent.noTint();
             return;
         }
-        shape.setFill(c);
-        shape.setStroke(perimc);
+
         if(d!=null){
             d.drawParticle(x,y,l);
             return;
@@ -160,8 +186,98 @@ public class ParticleDrawable {
         if(shape!=null){
             parent.fill(c);
             parent.stroke(perimc);
-            parent.shape(shape,x,y);
+            switch (shape){
+                case Rect:
+                    parent.rect(x,y,w,h);
+                    break;
+                case Ellipse:
+                    parent.ellipse(x,y,w,h);
+                    break;
+                case Line:
+                    parent.line(x,y,w,h);
+                    break;
+            }
         }
+    }
+
+    public void draw(PGraphics g, int x, int y, int l){
+        for(ParticleLifeEffect p: plf){
+            applyLE(l, p);
+        }
+
+        if(img!=null){
+            g.tint(c);
+            g.image(img,x,y);
+            g.noTint();
+            return;
+        }
+
+        if(d!=null){
+            d.drawParticle(x,y,l);
+            return;
+        }
+
+        if(shape!=null){
+            g.fill(c);
+            g.stroke(perimc);
+            switch (shape){
+                case Rect:
+                    g.rect(x,y,w,h);
+                    break;
+                case Ellipse:
+                    g.ellipse(x,y,w,h);
+                    break;
+                case Line:
+                    g.line(x,y,w,h);
+                    break;
+            }
+        }
+    }
+
+    public int[] getColorCache(int frames){
+        int[] out = new int[frames];
+        for(int i = 0 ; i < frames;i++){
+            out[i] = c;
+            for(ParticleLifeEffect p: plf){
+                applyLE(i, p);
+            }
+        }
+        return out;
+
+    }
+
+    public void drawCached(int x, int y, int color){
+
+
+        if(img!=null){
+            parent.tint(color);
+            parent.image(img,x,y);
+            parent.noTint();
+            return;
+        }
+
+        if(d!=null){
+            d.drawParticle(x,y,color);
+            return;
+        }
+
+        if(shape!=null){
+            parent.fill(color);
+            parent.stroke(perimc);
+            switch (shape){
+                case Rect:
+                    parent.rect(x,y,w,h);
+                    break;
+                case Ellipse:
+                    parent.ellipse(x,y,w,h);
+                    break;
+                case Line:
+                    parent.line(x,y,w,h);
+                    break;
+            }
+        }
+
+
     }
 
 }

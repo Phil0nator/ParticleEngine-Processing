@@ -8,9 +8,13 @@ import ParticleEngine.Behavior.ParticleInteraction;
 import ParticleEngine.Particle.Particle;
 import ParticleEngine.Visual.ParticleDrawable;
 import processing.core.*;
+import processing.data.JSONArray;
+import processing.data.JSONObject;
 
 import javax.crypto.interfaces.PBEKey;
 import java.util.ArrayList;
+
+import static java.lang.System.exit;
 
 /**
  *	The ParticleEngine class wraps together ParticleDrawable, Particle, and applies
@@ -58,6 +62,9 @@ public class ParticleEngine {
 	private ParticleInteraction[] interactions;
 	public ParticleDrawable drawer;
 	private GenerationType gen;
+
+
+
 	public int particleMaxLife = 255;
 	private int count = 0;
 	public int[] bounds = {50,50};
@@ -66,10 +73,10 @@ public class ParticleEngine {
 	private PVector origin = new PVector(0,0);
 	private boolean activated = false;
 	private PVector iv = new PVector(0,0);
-	private ArrayList<Particle> particles = new ArrayList<Particle>(0);
+	public ArrayList<Particle> particles = new ArrayList<Particle>(0);
 	private float particleSpeedFactor = 1.f;
 	private float randomNoiseDifferencial = 3.7f;
-
+	private int amountPerFrame = 0;
 
 
 	private float noiseMapFactor = 5.f;
@@ -95,6 +102,107 @@ public class ParticleEngine {
 		this.bounds[0] = parent.width;
 		this.bounds[1] = parent.height;
 	}
+
+	/**
+	 * Load the properties of the engine through a JSON file.
+	 *
+	 * Format:
+	 *
+	 * {
+	 *
+	 *     "setup":{
+	 *         "behaviors":[behaviorA, behaviorB],
+	 *         "interactions":[interactionA,interactionB],
+	 *         "gentype":gentype,
+	 *         "number":how many particles,
+	 *
+	 *     }
+	 *
+	 *     "args":{ //(all args are optional)
+	 *			"bounds":[w,h],
+	 *			"initial":InitialBehavior,
+	 *			"initialArg":InitialBehaviorArg,
+	 *			"origin":[x,y],
+	 *			"IV":[x,y], //Initial Velocity
+	 *			"speed":speedFactor,
+	 *			"RND":random noise differential,
+	 *			"NMF":noise map factor,
+	 *			"maxlife":max life of particles,
+	 *			"APF":amount per frame
+	 *     }
+	 *
+	 * }
+	 *
+	 * All of the "args" match mutator methods of this class. Each has its own documentation.
+	 * @param params Some json file you have loaded that is formatted correctly
+	 * @param dr a Particle drawer
+	 * @see ParticleEngine#setup(ParticleBehavior[], ParticleInteraction[], GenerationType, int, ParticleDrawable)
+	 * @see ParticleDrawable
+	 * @see ParticleEngine
+	 */
+	public final void setup(JSONObject params, ParticleDrawable dr){
+		try {
+			JSONObject set = params.getJSONObject("setup");
+			JSONArray pre_b = set.getJSONArray("behaviors");
+			behaviors = new ParticleBehavior[pre_b.size()];
+			for (int i = 0; i < pre_b.size(); i++) {
+				behaviors[i] = ParticleBehavior.valueOf(pre_b.getString(i));
+			}
+			JSONArray pre_i = set.getJSONArray("interactions");
+			interactions = new ParticleInteraction[pre_i.size()];
+			for (int i = 0; i < pre_i.size(); i++) {
+				interactions[i] = ParticleInteraction.valueOf(pre_i.getString(i));
+			}
+
+			gen = GenerationType.valueOf(set.getString("gentype"));
+
+			count = set.getInt("number");
+
+			JSONObject args = params.getJSONObject("args");
+			if(args.hasKey("bounds")){
+				JSONArray pre_bounds = args.getJSONArray("bounds");
+				bounds[0] = pre_bounds.getInt(0);
+				bounds[1] = pre_bounds.getInt(1);
+			}
+			if(args.hasKey("initial")){
+				initialBehavior = InitialBehavior.valueOf(args.getString("initial"));
+			}
+			if(args.hasKey("initialArg")){
+				initialBehaviorArg = args.getFloat("initialArg");
+			}
+			if(args.hasKey("origin")){
+				JSONArray pre_o = args.getJSONArray("origin");
+				origin.x = pre_o.getInt(0);
+				origin.y = pre_o.getInt(1);
+			}
+			if(args.hasKey("IV")){
+				JSONArray pre_iv = args.getJSONArray("IV");
+				iv.x = pre_iv.getFloat(0);
+				iv.y=pre_iv.getFloat(1);
+			}
+			if(args.hasKey("speed")){
+				setSpeedFactor(args.getFloat("speed"));
+			}
+			if(args.hasKey("RND")){
+				setRandomNoiseDifferencial(args.getFloat("RND"));
+			}
+			if(args.hasKey("NMF")){
+				setNoiseMapFactor(args.getFloat("NMF"));
+			}
+			if(args.hasKey("maxlife")){
+				setParticleMaxLife(args.getInt("maxlife"));
+			}
+			if(args.hasKey("APF")){
+				setAmountPerFrame(args.getInt("APF"));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			exit(404);
+		}
+		this.drawer = dr;
+		return;
+	}
+
 
 	/**
 	 * Set the bounds of the system.
@@ -164,7 +272,7 @@ public class ParticleEngine {
 	 *
 	 * @param f value
 	 */
-	public final void applySpeedFactor(float f){
+	public final void setSpeedFactor(float f){
 		particleSpeedFactor=f;
 	}
 
@@ -183,6 +291,33 @@ public class ParticleEngine {
 	 */
 	public final void setNoiseMapFactor(float noiseMapFactor) {
 		this.noiseMapFactor = noiseMapFactor;
+	}
+
+
+
+	/**
+	 * Set the maximum number of frames for which a particle lives
+	 * @param particleMaxLife life in frames (Use 0 to signify that particles should live forever)
+	 */
+	public void setParticleMaxLife(int particleMaxLife) {
+		this.particleMaxLife = particleMaxLife;
+	}
+
+	/**
+	 * Clear all particles
+	 */
+	public final void forceEmpty(){
+		particles.clear();
+	}
+
+	/**
+	 * Set the number of particles to produce per frame when using OverTime gentype
+	 * @param amt new amount
+	 * @see GenerationType
+	 * @see GenerationType#OnEvent
+	 */
+	public final void setAmountPerFrame(int amt){
+		amountPerFrame=amt;
 	}
 
 	private Particle createParticle(){
@@ -231,6 +366,14 @@ public class ParticleEngine {
 	}
 
 	/**
+	 * Clear existing particles and start the engine again
+	 */
+	public final void reActivate(){
+		forceEmpty();
+		activate();
+	}
+
+	/**
 	 * The Update method must always be ran in your draw method. This is where particles are updated,
 	 * and drawn to the screen
 	 */
@@ -238,18 +381,30 @@ public class ParticleEngine {
 		try {
 			if (!activated) return;
 			if (gen == GenerationType.OverTime) {
-				if (particles.size() < count) {
-					particles.add(createParticle());
+				if (particles.size() < count||count == -1) {
+					createBatch(amountPerFrame);
 				}
 			}
 
-			for (Particle p : particles) {
+			for (int i = 0 ; i < particles.size();i++) {
+				Particle p = particles.get(i);
 				p.update(behaviors, interactions);
+				if(particleMaxLife!=0) {
+					if (p.life > particleMaxLife) {
+						particles.set(i,null);
+						particles.remove(i);
+						i--;
+					}
+				}
 			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 
+	}
+
+	public final boolean isActivated(){
+		return activated;
 	}
 
 	/**
@@ -261,10 +416,56 @@ public class ParticleEngine {
 	public final void createBatch(int amt){
 
 		for(int i = 0 ; i < amt;i++){
-			if(particles.size()>count)return;
+			if(particles.size()>count&&count!=-1)return;
 			particles.add(createParticle());
 
 		}
 	}
+
+	/**
+	 * Used internally.
+	 * (EXPENSIVE)
+	 *
+	 * Used to generate the data used in a LightCache
+	 *
+	 * @param frames number of frames to generate
+	 * @return cache data
+	 * @see ParticleEngine.caches.LightCache
+	 */
+	public final PVector[][] produceLightCache(int frames){
+		PVector[][] data = new PVector[frames][];
+		for(int i = 0 ; i < frames;i++){
+
+			if (gen == GenerationType.OverTime) {
+				if (particles.size() < count||count == -1) {
+					createBatch(amountPerFrame);
+				}
+			}
+			data[i] = new PVector[particles.size()];
+			for (int j = 0 ; j < particles.size();j++) {
+				Particle p = particles.get(j);
+				data[i][j] = p.updateforcache(behaviors, interactions).copy();
+				data[i][j].z = p.life; //store life in z for convenience
+				if(particleMaxLife!=0) {
+					if (p.life > particleMaxLife) {
+						particles.remove(j);
+						j--;
+					}
+				}
+			}
+		}
+		return data;
+	}
+
+	//getters
+
+	/**
+	 * Determine if the engine has no particles
+	 * @return if the number of particles is equal to zero
+	 */
+	public final boolean isEmpty(){
+		return particles.size()==0;
+	}
+
 
 }
