@@ -36,7 +36,7 @@ import static processing.core.PApplet.abs;
 
 public class ParticleDrawable {
 
-    Shape shape;
+    public Shape shape;
     PImage img;
     CustomParticleDraw d;
     ParticleLifeEffect[] plf = {};
@@ -130,7 +130,15 @@ public class ParticleDrawable {
         this.perimc=c;
     }
 
-    private void applyLE(int life, ParticleLifeEffect effect){
+    /**
+     * Used internally.
+     * @return the radius of the particle
+     */
+    public final float getR(){
+        return w/2;
+    }
+
+    private void applyLE(int life, ParticleLifeEffect effect, int x, int y){
         if(effect == null)return;
         switch (effect){
             case Negativealpha:
@@ -156,6 +164,22 @@ public class ParticleDrawable {
                 return;
             case Positiveblue:
                 c = parent.color(parent.red(c),parent.green(c),c(ogb+life),parent.alpha(c));
+                return;
+            case NoisemapAlpha:
+                c = parent.color(parent.red(c),parent.green(c),parent.blue(c),parent.noise(x*.02f,y*.02f)*255);
+                break;
+            case NoisemapRed:
+                c = parent.color(parent.noise(x*.02f,y*.02f)*255,parent.green(c),parent.blue(c),parent.alpha(c));
+                break;
+            case NoisemapGreen:
+                c = parent.color(parent.red(c),parent.noise(x*.02f,y*.02f)*255,parent.blue(c),parent.alpha(c));
+                break;
+            case NoisemapBlue:
+                c = parent.color(parent.red(c),parent.green(c),parent.noise(x*.02f,y*.02f)*255,parent.alpha(c));
+                break;
+            case NoisemapColor:
+                c = parent.color(parent.noise(200+x*.02f,200+y*.02f)*255,parent.noise(100+x*.02f,100+y*.02f)*255,parent.noise(x*.02f,y*.02f)*255,parent.alpha(c));
+                break;
         }
     }
 
@@ -168,7 +192,7 @@ public class ParticleDrawable {
     public void draw(int x, int y, int l){
         if(parent.alpha(c)==0){return;}
         for(ParticleLifeEffect p: plf){
-            applyLE(l, p);
+            applyLE(l, p,x,y);
         }
 
         if(img!=null){
@@ -202,7 +226,7 @@ public class ParticleDrawable {
 
     public void draw(PGraphics g, int x, int y, int l){
         for(ParticleLifeEffect p: plf){
-            applyLE(l, p);
+            applyLE(l, p,x,y);
         }
 
         if(img!=null){
@@ -239,7 +263,7 @@ public class ParticleDrawable {
         for(int i = 0 ; i < frames;i++){
             out[i] = c;
             for(ParticleLifeEffect p: plf){
-                applyLE(i, p);
+                applyLE(i, p,0,0);
             }
         }
         return out;

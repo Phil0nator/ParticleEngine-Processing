@@ -28,6 +28,12 @@ public class LightCache {
     private int y;
     public int frame = 0;
     private boolean stopAfterPlay = false;
+    private boolean useColorCache = true;
+
+    public final void setUseColorCache(boolean f){
+        useColorCache=f;
+    }
+
     /**
      * Initialize a light cache with its parent
      * @param parent your applet
@@ -45,6 +51,7 @@ public class LightCache {
     public final void createFromEngine(ParticleEngine e, int frames){
         locs = e.produceLightCache(frames);
         dr = e.drawer;
+        if(useColorCache)
         colorCache = dr.getColorCache(frames);
     }
 
@@ -83,7 +90,11 @@ public class LightCache {
         if(frame==-1)return;
         for(int i = 0 ; i < locs[frame].length;i++){
             try {
-                dr.drawCached((int) locs[frame][i].x, (int) locs[frame][i].y, colorCache[(int) locs[frame][i].z]);
+                if(useColorCache) {
+                    dr.drawCached((int) locs[frame][i].x, (int) locs[frame][i].y, colorCache[(int) locs[frame][i].z]);
+                }else{
+                    dr.draw((int) locs[frame][i].x, (int) locs[frame][i].y, (int) locs[frame][i].z);
+                }
             }catch(Exception e){
 
             }

@@ -101,6 +101,7 @@ public class ParticleEngine {
 		this.count = count;
 		this.bounds[0] = parent.width;
 		this.bounds[1] = parent.height;
+		parent.noiseDetail(count);
 	}
 
 	/**
@@ -157,7 +158,7 @@ public class ParticleEngine {
 			gen = GenerationType.valueOf(set.getString("gentype"));
 
 			count = set.getInt("number");
-
+			parent.noiseDetail(count);
 			JSONObject args = params.getJSONObject("args");
 			if(args.hasKey("bounds")){
 				JSONArray pre_bounds = args.getJSONArray("bounds");
@@ -320,6 +321,14 @@ public class ParticleEngine {
 		amountPerFrame=amt;
 	}
 
+
+	private final int[] getcoords(){
+		int[] out = new int[2];
+		out[0] = particles.size()%bounds[0];
+		out[1] = particles.size()/bounds[0];
+		return out;
+	}
+
 	private Particle createParticle(){
 		Particle np = new Particle(parent,0,0,0,0);
 		switch (initialBehavior){
@@ -338,6 +347,12 @@ public class ParticleEngine {
 			case RandomlyVarying_IV:
 				np = new Particle(parent,(int)origin.x,(int)origin.y,iv.x+parent.random(-initialBehaviorArg,initialBehaviorArg),iv.y+parent.random(-initialBehaviorArg,initialBehaviorArg));
 				break;
+			case NoiseFillSpace:
+				int[] c = getcoords();
+				np = new Particle(parent, (int)parent.noise(c[0])*bounds[0],(int)parent.noise(c[1])*bounds[1],0,0);
+				break;
+			case EvenFillSpace:
+				np = new Particle(parent, (int)particles.size()%bounds[0],(int)particles.size()/bounds[0],0,0);
 			default:
 				np = new Particle(parent,(int)origin.x,(int)origin.y,0,0);
 		}

@@ -58,6 +58,11 @@ public enum ParticleBehavior {
      * @see ParticleEngine.ParticleEngine
      * @see ParticleEngine.ParticleEngine#setOrigin(int, int)
      */
-    OrbitOrigin
+    OrbitOrigin,
+
+    /**
+     * Particles will follow normal physics, but will bounce to a lesser degree
+     */
+    Normal_Physics_NoBounce,
 
 }

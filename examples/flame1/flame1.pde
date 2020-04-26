@@ -6,7 +6,7 @@ import ParticleEngine.Visual.properties.*;
 import ParticleEngine.caches.*;
 
 ParticleEngine pe;
-HeavyCache hc;
+
 LightCache lc;
 
 void setup(){
@@ -36,5 +36,5 @@ void draw(){
   }catch(Exception e){
     e.printStackTrace();
   }
-  text(frameRate, 50,50);
+  text(lc.locs[lc.frame].length, 50,50);
 }

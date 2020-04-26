@@ -20,7 +20,16 @@ public enum ParticleLifeEffect {
 
     Positiveblue,
 
-    Positivegreyscale
+    Positivegreyscale,
 
+    NoisemapAlpha,
+
+    NoisemapRed,
+
+    NoisemapGreen,
+
+    NoisemapBlue,
+
+    NoisemapColor,
 
 }

@@ -3,6 +3,7 @@ package ParticleEngine.Particle;
 import ParticleEngine.Behavior.ParticleBehavior;
 import ParticleEngine.Behavior.ParticleInteraction;
 import ParticleEngine.ParticleEngine;
+import ParticleEngine.Visual.Shape;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -20,6 +21,7 @@ public class Particle {
     float randomNoiseSeed = 1;
     public float mapfac = 5.f;
     public int life = 0;
+    private boolean nobounce = false;
 
 
 
@@ -97,7 +99,6 @@ public class Particle {
 
     private void applyBehaviors(ParticleBehavior[] behaviors){
         for(ParticleBehavior b: behaviors){
-
             applyBehavior(b);
         }
     }
@@ -136,16 +137,23 @@ public class Particle {
                 return;
             case Particle_Window_Collision:
                 if(loc.x>parent.bounds[0]||loc.x<0){
-                    vel.x*=-1;
+
+                    vel.x*=-.5;
                 }
                 if(loc.y > parent.bounds[1]||loc.y<0){
-                    vel.y*=-1;
+                    vel.y*=-.5;
                 }
                 return;
             case InterParticle_Collision:
-                for(Particle p: parent.particles){
-                    if(dist(loc.x,loc.y,p.loc.x,p.loc.y)<sqrt((parent.drawer.w*parent.drawer.w)+(parent.drawer.h*parent.drawer.h))){
-                        vel.add(p.vel);
+                if(parent.drawer.shape == Shape.Ellipse) {
+                    for (Particle p : parent.particles) {
+                        double collisiondist = dist(loc.x,loc.y,p.loc.x,p.loc.y);
+                        if(collisiondist<parent.drawer.getR()*2){
+                            p.vel.add(vel.copy().mult(0.5f));
+                            vel.mult(-0.5f);
+                            applyVelocity();
+                            p.applyVelocity();
+                        }
                     }
                 }
                 return;
