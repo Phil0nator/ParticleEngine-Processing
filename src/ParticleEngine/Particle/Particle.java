@@ -8,10 +8,11 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 import static java.lang.Math.random;
-import static processing.core.PApplet.dist;
-import static processing.core.PApplet.sqrt;
+import static processing.core.PApplet.*;
 
 public class Particle {
+
+    private final int PTV = 5;
 
     PApplet applet;
     public ParticleEngine parent;
@@ -22,7 +23,8 @@ public class Particle {
     public float mapfac = 5.f;
     public int life = 0;
     private boolean nobounce = false;
-
+    public int mass = 5;
+    public int index = 0;
 
 
 
@@ -37,6 +39,10 @@ public class Particle {
         life++;
     }
 
+    public void constrainVelocity(){
+        vel = new PVector(constrain(vel.x,-PTV,PTV),constrain(vel.y,-PTV,PTV));
+    }
+
     public void applySpeedFactor(float f){
         acceloration=f;
     }
@@ -47,7 +53,7 @@ public class Particle {
 
     private void normal(){
 
-        vel = new PVector(vel.x,vel.y+1);
+        vel = new PVector(vel.x,vel.y+mass);
         applyVelocity();
 
     }
@@ -136,23 +142,99 @@ public class Particle {
             case None:
                 return;
             case Particle_Window_Collision:
-                if(loc.x>parent.bounds[0]||loc.x<0){
+                if(loc.x>parent.bounds[0]-parent.drawer.getR()||loc.x<parent.drawer.getR()){
 
                     vel.x*=-.5;
                 }
-                if(loc.y > parent.bounds[1]||loc.y<0){
+                if(loc.y > parent.bounds[1]-parent.drawer.getR()||loc.y<parent.drawer.getR()){
                     vel.y*=-.5;
                 }
                 return;
             case InterParticle_Collision:
+                double radius = parent.drawer.getR();
                 if(parent.drawer.shape == Shape.Ellipse) {
-                    for (Particle p : parent.particles) {
-                        double collisiondist = dist(loc.x,loc.y,p.loc.x,p.loc.y);
-                        if(collisiondist<parent.drawer.getR()*2){
-                            p.vel.add(vel.copy().mult(0.5f));
-                            vel.mult(-0.5f);
-                            applyVelocity();
-                            p.applyVelocity();
+                    //https://processing.org/examples/circlecollision.html
+                    for (int it = index+1;it<parent.particles.size();it++) {
+                        Particle p = parent.particles.get(it);
+                        // Get distances between the balls components
+                        PVector distanceVect = PVector.sub(p.loc, loc);
+
+                        // Calculate magnitude of the vector separating the balls
+                        float distanceVectMag = distanceVect.mag();
+
+                        // Minimum distance before they are touching
+                        float minDistance = (float)radius*2;
+
+                        if (distanceVectMag < minDistance) {
+
+
+                            float distanceCorrection = (float)((minDistance - distanceVectMag) / 2.0);
+                            PVector d = distanceVect.copy();
+                            PVector correctionVector = d.normalize().mult(distanceCorrection);
+                            p.loc.add(correctionVector);
+                            loc.sub(correctionVector);
+
+
+                            float theta = distanceVect.heading();
+
+                            float sine = sin(theta);
+                            float cosine = cos(theta);
+
+                            PVector[] bTemp = {
+                                    new PVector(), new PVector()
+                            };
+
+                            bTemp[1].x = cosine * distanceVect.x + sine * distanceVect.y;
+                            bTemp[1].y = cosine * distanceVect.y - sine * distanceVect.x;
+
+
+                            PVector[] vTemp = {
+                                    new PVector(), new PVector()
+                            };
+
+                            vTemp[0].x = cosine * vel.x + sine * vel.y;
+                            vTemp[0].y = cosine * vel.y - sine * vel.x;
+                            vTemp[1].x = cosine * p.vel.x + sine * p.vel.y;
+                            vTemp[1].y = cosine * p.vel.y - sine * p.vel.x;
+
+                            PVector[] vFinal = {
+                                    new PVector(), new PVector()
+                            };
+
+
+                            vFinal[0].x = ((mass - p.mass) * vTemp[0].x + 2 * p.mass * vTemp[1].x) / (mass + p.mass);
+                            vFinal[0].y = vTemp[0].y;
+
+
+                            vFinal[1].x = ((p.mass - mass) * vTemp[1].x + 2 * mass * vTemp[0].x) / (mass + p.mass);
+                            vFinal[1].y = vTemp[1].y;
+
+
+                            bTemp[0].x += vFinal[0].x;
+                            bTemp[1].x += vFinal[1].x;
+
+                            PVector[] bFinal = {
+                                    new PVector(), new PVector()
+                            };
+
+                            bFinal[0].x = cosine * bTemp[0].x - sine * bTemp[0].y;
+                            bFinal[0].y = cosine * bTemp[0].y + sine * bTemp[0].x;
+                            bFinal[1].x = cosine * bTemp[1].x - sine * bTemp[1].y;
+                            bFinal[1].y = cosine * bTemp[1].y + sine * bTemp[1].x;
+
+                            p.loc.x = loc.x + bFinal[1].x;
+                            p.loc.y = loc.y + bFinal[1].y;
+
+                            loc.add(bFinal[0]);
+
+                            vel.x = cosine * vFinal[0].x - sine * vFinal[0].y;
+                            vel.y = cosine * vFinal[0].y + sine * vFinal[0].x;
+                            p.vel.x = cosine * vFinal[1].x - sine * vFinal[1].y;
+                            p.vel.y = cosine * vFinal[1].y + sine * vFinal[1].x;
+
+                            constrainVelocity();
+                            p.constrainVelocity();
+
                         }
                     }
                 }

@@ -1,10 +1,14 @@
 package ParticleEngine.caches;
 
+import ParticleEngine.Compression.Compressor;
 import ParticleEngine.ParticleEngine;
 import ParticleEngine.Visual.ParticleDrawable;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
+
+import java.io.*;
+import java.util.zip.DeflaterOutputStream;
 
 /**
  * The LightCache class is used to create faster caches based on particle engines.
@@ -43,16 +47,91 @@ public class LightCache {
     }
 
     /**
+     * Save the contents of a cache into a file, which can then be loaded later
+     * @param path where to save the file relative to the sketch
+     * @see LightCache#loadFromFile(String)
+     */
+    public final void saveFile(String path){
+        try {
+            OutputStream o = p.createOutput(path);
+            PrintWriter p = new PrintWriter(o);
+            p.println(locs.length);
+            for (PVector[] Locs : locs) {
+
+                for (PVector l : Locs) {
+                    p.print(Compressor.compress(l)+"%");
+                }
+                p.print("\n");
+                p.flush();
+            }
+            Compressor.compressFile(this.p.sketchPath()+"/"+path);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Load from a file
+     * @param path path to file
+     * @see LightCache#saveFile(String)
+     */
+    public final void loadFromFile(String path){
+        try{
+
+            Compressor.decompressFile(this.p.sketchPath()+"/"+path);
+
+            BufferedReader reader = p.createReader(path);
+            locs = new PVector[Integer.valueOf(reader.readLine())][];
+            String line;
+            int i = 0;
+            while ((line = reader.readLine()) != null) {
+                line = line.replaceAll(" ", "");
+                String[] vecs = line.split("%");
+                locs[i] = new PVector[vecs.length];
+                int j = 0;
+                for(String vec : vecs){
+                    String[] coords = vec.split(",");
+                    if(coords.length<2)continue;
+                    locs[i][j] = Compressor.decompress(vec);
+                    j++;
+                }
+                i++;
+            }
+
+            Compressor.compressFile(this.p.sketchPath()+"/"+path);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Fill in fields based on data in a ParticleEngine
      * @param e engine
      * @param frames number of frames to grab from the engine
      * @see ParticleEngine
+     * @see LightCache#createFromEngineVerbose(ParticleEngine, int)
      */
     public final void createFromEngine(ParticleEngine e, int frames){
-        locs = e.produceLightCache(frames);
+        locs = e.produceLightCache(frames, false);
         dr = e.drawer;
         if(useColorCache)
         colorCache = dr.getColorCache(frames);
+    }
+
+    /**
+     * Fill in fields based on data in a ParticleEngine, printing out progress
+     * @param e engine
+     * @param frames number of frames to render from the engine
+     * @see ParticleEngine
+     * @see LightCache#createFromEngine(ParticleEngine, int)
+     */
+    public final void createFromEngineVerbose(ParticleEngine e, int frames){
+        locs = e.produceLightCache(frames, true);
+        dr = e.drawer;
+        if(useColorCache)
+            colorCache = dr.getColorCache(frames);
     }
 
     /**
@@ -80,6 +159,20 @@ public class LightCache {
      */
     public final void setStopAfterPlay(boolean val){
         stopAfterPlay = val;
+    }
+
+    /**
+     * Use to create a color cache if you are loading the cache from a file
+     * (This is only needed if you are loading a file)
+     * (This must be used after you've loaded from a file)
+     * @param dr drawable
+     * @see LightCache#saveFile(String)
+     * @see LightCache#loadFromFile(String)
+     * @see ParticleDrawable
+     */
+    public final void createColorCache(ParticleDrawable dr){
+        colorCache = dr.getColorCache(locs.length);
+        this.dr = dr;
     }
 
     /**

@@ -5,19 +5,20 @@
 	"behaviors":["Normal_Physics"],
 	"interactions":[Particle_Window_Collision, InterParticle_Collision],
 	"gentype": "OverTime",
-	"number": 10000
+	"number": 1000000
 },
 "args":{
 
-	"initial":"Explosive",
-	"initialArg":100,
+	"initial":"RandomlyVarying_IV",
+	"initialArg":50,
 	"origin":[350,350],
 	"speed":.1,
 	"bounds":[700,700],
-	"maxlife":0,
-	"RND":1,
-	"APF":1,
-	"IV":[10,-1]
+	"maxlife":500,
+	"RND":10,
+	"APF":20,
+	"IV":[1,1],
+	"particleMass":10
 }
 
 

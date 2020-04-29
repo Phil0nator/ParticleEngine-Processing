@@ -79,6 +79,9 @@ public class ParticleEngine {
 	private int amountPerFrame = 0;
 
 
+
+	private int particlemass = 10;
+
 	private float noiseMapFactor = 5.f;
 	/**
 	 * Setup the properties of the engine
@@ -196,6 +199,9 @@ public class ParticleEngine {
 			if(args.hasKey("APF")){
 				setAmountPerFrame(args.getInt("APF"));
 			}
+			if(args.hasKey("particleMass")){
+				setParticlemass(args.getInt("particleMass"));
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 			exit(404);
@@ -263,6 +269,13 @@ public class ParticleEngine {
 		initialBehaviorArg=val;
 	}
 
+	/**
+	 * Set the mass for particles
+	 * @param particlemass new mass
+	 */
+	public final void setParticlemass(int particlemass) {
+		this.particlemass = particlemass;
+	}
 	/**
 	 * Slow down or speed up particles.
 	 *
@@ -360,6 +373,8 @@ public class ParticleEngine {
 		np.applySpeedFactor(particleSpeedFactor);
 		np.createRandomSeed(randomNoiseDifferencial);
 		np.mapfac = noiseMapFactor;
+		np.mass = particlemass;
+		np.index = particles.size();
 		return np;
 
 	}
@@ -447,7 +462,7 @@ public class ParticleEngine {
 	 * @return cache data
 	 * @see ParticleEngine.caches.LightCache
 	 */
-	public final PVector[][] produceLightCache(int frames){
+	public final PVector[][] produceLightCache(int frames, boolean verbose){
 		PVector[][] data = new PVector[frames][];
 		for(int i = 0 ; i < frames;i++){
 
@@ -468,6 +483,12 @@ public class ParticleEngine {
 					}
 				}
 			}
+
+			if(verbose){
+				System.out.println("Producing light cache: "+i+"/"+frames);
+			}
+
+
 		}
 		return data;
 	}

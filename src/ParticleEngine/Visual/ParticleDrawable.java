@@ -135,7 +135,7 @@ public class ParticleDrawable {
      * @return the radius of the particle
      */
     public final float getR(){
-        return w/2;
+        return (float)w/2;
     }
 
     private void applyLE(int life, ParticleLifeEffect effect, int x, int y){

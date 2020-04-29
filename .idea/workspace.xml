@@ -18,22 +18,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="335" column="50" selection-start-line="335" selection-start-column="50" selection-end-line="335" selection-end-column="50" />
+            <state relative-caret-position="270">
+              <caret line="475" column="41" selection-start-line="475" selection-start-column="41" selection-end-line="475" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1920#1930#0" expanded="true" />
-                <element signature="e#5889#6246#0" />
-                <element signature="e#8032#8033#0" expanded="true" />
-                <element signature="e#8075#8076#0" expanded="true" />
-                <element signature="e#8303#8304#0" expanded="true" />
-                <element signature="e#8348#8349#0" expanded="true" />
-                <element signature="e#9715#9928#0" />
-                <element signature="e#9931#10061#0" />
-                <element signature="e#11032#11033#0" expanded="true" />
-                <element signature="e#11055#11056#0" expanded="true" />
-                <element signature="e#12436#12437#0" expanded="true" />
-                <element signature="e#12469#12470#0" expanded="true" />
+                <element signature="e#6730#6731#0" expanded="true" />
+                <element signature="e#6773#6774#0" expanded="true" />
+                <element signature="e#6905#6906#0" expanded="true" />
+                <element signature="e#6937#6938#0" expanded="true" />
+                <element signature="e#7324#7325#0" expanded="true" />
+                <element signature="e#7352#7353#0" expanded="true" />
+                <element signature="e#7522#7523#0" expanded="true" />
+                <element signature="e#7551#7552#0" expanded="true" />
+                <element signature="e#7765#7766#0" expanded="true" />
+                <element signature="e#7904#7905#0" expanded="true" />
+                <element signature="e#7932#7933#0" expanded="true" />
+                <element signature="e#8140#8141#0" expanded="true" />
+                <element signature="e#8172#8173#0" expanded="true" />
+                <element signature="e#8426#8427#0" expanded="true" />
+                <element signature="e#8699#8700#0" expanded="true" />
+                <element signature="e#8722#8723#0" expanded="true" />
+                <element signature="e#8746#8747#0" expanded="true" />
+                <element signature="e#8967#8968#0" expanded="true" />
+                <element signature="e#8992#8993#0" expanded="true" />
+                <element signature="e#10568#11232#0" />
+                <element signature="e#11517#11518#0" expanded="true" />
+                <element signature="e#11540#11541#0" expanded="true" />
+                <element signature="e#13078#13079#0" expanded="true" />
+                <element signature="e#13111#13112#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,34 +54,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-729">
-              <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
+            <state relative-caret-position="1601">
+              <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1374#1375#0" expanded="true" />
-                <element signature="e#1406#1407#0" expanded="true" />
                 <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
                 <element signature="method#ParticleDrawable#2;class#ParticleDrawable#0" />
                 <element signature="method#setParent#0;class#ParticleDrawable#0" />
-                <element signature="e#3168#3169#0" expanded="true" />
-                <element signature="e#3194#3195#0" expanded="true" />
                 <element signature="method#drawCached#0;class#ParticleDrawable#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="154" selection-start-line="154" selection-end-line="154" />
+            <state relative-caret-position="524">
+              <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1026#1027#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
+                <element signature="e#1057#1058#0" expanded="true" />
+                <element signature="e#4248#4249#0" expanded="true" />
+                <element signature="e#4272#4273#0" expanded="true" />
+                <element signature="method#playAt#0;class#LightCache#0" />
+                <element signature="e#4731#4732#0" expanded="true" />
+                <element signature="e#4766#4767#0" expanded="true" />
+                <element signature="method#update#0;class#LightCache#0" />
                 <element signature="method#getFrameData#0;class#LightCache#0" />
                 <element signature="method#fillframe#0;class#LightCache#0" />
+                <element signature="method#dispose#0;class#LightCache#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Compression/Compressor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="702">
+              <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,25 +123,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="151" column="59" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Particle#0;class#Particle#0" />
-                <element signature="method#normal#0;class#Particle#0" />
-              </folding>
+            <state relative-caret-position="864">
+              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java">
+        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+            <state relative-caret-position="61">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#Particle#0;class#Particle#0" />
+                <element signature="method#normal#0;class#Particle#0" />
+                <element signature="method#applyBehavior#0;class#Particle#0" />
+                <element signature="method#applyBehaviors#0;class#Particle#0" />
+                <element signature="method#updateforcache#0;class#Particle#0" />
+                <element signature="method#update#0;class#Particle#0" />
+                <element signature="method#applyInteractions#0;class#Particle#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,10 +156,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>other</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -146,12 +183,13 @@
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/ParticleInteraction.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/caches/HeavyCache.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/Shape.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/ParticleBehavior.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Compression/Compressor.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java" />
       </list>
     </option>
   </component>
@@ -167,6 +205,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,7 +279,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,7 +326,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -516,31 +554,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="335" column="50" selection-start-line="335" selection-start-column="50" selection-end-line="335" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1920#1930#0" expanded="true" />
-            <element signature="e#5889#6246#0" />
-            <element signature="e#8032#8033#0" expanded="true" />
-            <element signature="e#8075#8076#0" expanded="true" />
-            <element signature="e#8303#8304#0" expanded="true" />
-            <element signature="e#8348#8349#0" expanded="true" />
-            <element signature="e#9715#9928#0" />
-            <element signature="e#9931#10061#0" />
-            <element signature="e#11032#11033#0" expanded="true" />
-            <element signature="e#11055#11056#0" expanded="true" />
-            <element signature="e#12436#12437#0" expanded="true" />
-            <element signature="e#12469#12470#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
+        <state relative-caret-position="864">
           <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
         </state>
       </provider>
@@ -562,46 +578,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java">
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="61">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="method#getFrameData#0;class#LightCache#0" />
-            <element signature="method#fillframe#0;class#LightCache#0" />
+            <element signature="method#Particle#0;class#Particle#0" />
+            <element signature="method#normal#0;class#Particle#0" />
+            <element signature="method#applyBehavior#0;class#Particle#0" />
+            <element signature="method#applyBehaviors#0;class#Particle#0" />
+            <element signature="method#updateforcache#0;class#Particle#0" />
+            <element signature="method#update#0;class#Particle#0" />
+            <element signature="method#applyInteractions#0;class#Particle#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="475" column="41" selection-start-line="475" selection-start-column="41" selection-end-line="475" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6730#6731#0" expanded="true" />
+            <element signature="e#6773#6774#0" expanded="true" />
+            <element signature="e#6905#6906#0" expanded="true" />
+            <element signature="e#6937#6938#0" expanded="true" />
+            <element signature="e#7324#7325#0" expanded="true" />
+            <element signature="e#7352#7353#0" expanded="true" />
+            <element signature="e#7522#7523#0" expanded="true" />
+            <element signature="e#7551#7552#0" expanded="true" />
+            <element signature="e#7765#7766#0" expanded="true" />
+            <element signature="e#7904#7905#0" expanded="true" />
+            <element signature="e#7932#7933#0" expanded="true" />
+            <element signature="e#8140#8141#0" expanded="true" />
+            <element signature="e#8172#8173#0" expanded="true" />
+            <element signature="e#8426#8427#0" expanded="true" />
+            <element signature="e#8699#8700#0" expanded="true" />
+            <element signature="e#8722#8723#0" expanded="true" />
+            <element signature="e#8746#8747#0" expanded="true" />
+            <element signature="e#8967#8968#0" expanded="true" />
+            <element signature="e#8992#8993#0" expanded="true" />
+            <element signature="e#10568#11232#0" />
+            <element signature="e#11517#11518#0" expanded="true" />
+            <element signature="e#11540#11541#0" expanded="true" />
+            <element signature="e#13078#13079#0" expanded="true" />
+            <element signature="e#13111#13112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-349">
+          <caret line="2059" column="23" selection-start-line="2059" selection-start-column="23" selection-end-line="2059" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-729">
-          <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
+        <state relative-caret-position="1601">
+          <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1374#1375#0" expanded="true" />
-            <element signature="e#1406#1407#0" expanded="true" />
             <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
             <element signature="method#ParticleDrawable#2;class#ParticleDrawable#0" />
             <element signature="method#setParent#0;class#ParticleDrawable#0" />
-            <element signature="e#3168#3169#0" expanded="true" />
-            <element signature="e#3194#3195#0" expanded="true" />
             <element signature="method#drawCached#0;class#ParticleDrawable#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Compression/Compressor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="151" column="59" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
+        <state relative-caret-position="702">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Particle#0;class#Particle#0" />
-            <element signature="method#normal#0;class#Particle#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#4248#4249#0" expanded="true" />
+            <element signature="e#4272#4273#0" expanded="true" />
+            <element signature="method#playAt#0;class#LightCache#0" />
+            <element signature="e#4731#4732#0" expanded="true" />
+            <element signature="e#4766#4767#0" expanded="true" />
+            <element signature="method#update#0;class#LightCache#0" />
+            <element signature="method#getFrameData#0;class#LightCache#0" />
+            <element signature="method#fillframe#0;class#LightCache#0" />
+            <element signature="method#dispose#0;class#LightCache#0" />
           </folding>
         </state>
       </provider>
