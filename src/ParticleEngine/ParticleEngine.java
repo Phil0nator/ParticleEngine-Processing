@@ -1,10 +1,7 @@
 package ParticleEngine;
 
 
-import ParticleEngine.Behavior.GenerationType;
-import ParticleEngine.Behavior.InitialBehavior;
-import ParticleEngine.Behavior.ParticleBehavior;
-import ParticleEngine.Behavior.ParticleInteraction;
+import ParticleEngine.Behavior.*;
 import ParticleEngine.Particle.Particle;
 import ParticleEngine.Visual.ParticleDrawable;
 import processing.core.*;
@@ -30,7 +27,7 @@ import static java.lang.System.exit;
  *
  *
  */
-public class ParticleEngine {
+public class ParticleEngine implements ParticleRunner {
 
 	/* PROCESSING STUFF */
 
@@ -60,6 +57,9 @@ public class ParticleEngine {
 
 	private ParticleBehavior[] behaviors;
 	private ParticleInteraction[] interactions;
+
+
+
 	public ParticleDrawable drawer;
 	private GenerationType gen;
 
@@ -77,10 +77,10 @@ public class ParticleEngine {
 	private float particleSpeedFactor = 1.f;
 	private float randomNoiseDifferencial = 3.7f;
 	private int amountPerFrame = 0;
+	private ArrayList<CustomParticleBehavior> customParticleBehaviors = new ArrayList<CustomParticleBehavior>(0);
 
 
-
-	private int particlemass = 10;
+	private float particlemass = 10.0f;
 
 	private float noiseMapFactor = 5.f;
 	/**
@@ -200,7 +200,7 @@ public class ParticleEngine {
 				setAmountPerFrame(args.getInt("APF"));
 			}
 			if(args.hasKey("particleMass")){
-				setParticlemass(args.getInt("particleMass"));
+				setParticlemass(args.getFloat("particleMass"));
 			}
 		}catch (Exception e){
 			e.printStackTrace();
@@ -240,6 +240,7 @@ public class ParticleEngine {
 	 * @param x coord
 	 * @param y coord
 	 */
+	@Override
 	public final void setOrigin(int x, int y){
 		origin = new PVector(x,y);
 	}
@@ -273,7 +274,7 @@ public class ParticleEngine {
 	 * Set the mass for particles
 	 * @param particlemass new mass
 	 */
-	public final void setParticlemass(int particlemass) {
+	public final void setParticlemass(float particlemass) {
 		this.particlemass = particlemass;
 	}
 	/**
@@ -289,6 +290,16 @@ public class ParticleEngine {
 	public final void setSpeedFactor(float f){
 		particleSpeedFactor=f;
 	}
+
+	/**
+	 * Set the particle drawer of an engine (or change it if it already exists)
+	 * @param drawer new drawer
+	 * @see ParticleDrawable
+	 */
+	public final void setDrawer(ParticleDrawable drawer) {
+		this.drawer = drawer;
+	}
+
 
 	/**
 	 * Set the amount of difference between particles following noise patterns.
@@ -307,6 +318,9 @@ public class ParticleEngine {
 		this.noiseMapFactor = noiseMapFactor;
 	}
 
+	public final void addCustomBehavior(CustomParticleBehavior n){
+		customParticleBehaviors.add(n);
+	}
 
 
 	/**
@@ -503,5 +517,8 @@ public class ParticleEngine {
 		return particles.size()==0;
 	}
 
-
+	@Override
+	public void run(){
+		update();
+	}
 }

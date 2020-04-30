@@ -2,19 +2,21 @@
 
 "setup":{
 
-	"behaviors":["Particle_Smooth_Random"],
+	"behaviors":["Particle_Smooth_Random", "Normal_Physics"],
 	"interactions":[Particle_Window_Collision],
-	"gentype": "AtOnce",
-	"number": 300
+	"gentype": "OverTime",
+	"number": 1000
 },
 "args":{
 
 	"initial":"Explosive",
-	"initialArg":100,
+	"initialArg":25,
 	"origin":[350,350],
-	"speed":0.05,
+	"speed":0.1,
 	"bounds":[700,700],
-	"maxlife":255,
+	"maxlife":100,
+	"APF":100,
+	"particleMass":0.5
 
 }
 

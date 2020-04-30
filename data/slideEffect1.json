@@ -1,0 +1,23 @@
+{
+
+  "setup":{
+
+    "behaviors":["Particle_Smooth_Random"],
+    "interactions":["Particle_Window_Collision"],
+    "gentype": "OnEvent",
+    "number": -1
+  },
+  "args":{
+
+    "initial":"RandomlyVarying_IV",
+    "initialArg":5,
+    "origin":[0,0],
+    "speed": 0.5,
+    "bounds":[500,500],
+    "maxlife":25,
+    "RND":10,
+    "IV": [10,-5]
+  }
+
+
+}

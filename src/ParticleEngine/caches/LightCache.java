@@ -3,6 +3,7 @@ package ParticleEngine.caches;
 import ParticleEngine.Compression.Compressor;
 import ParticleEngine.ParticleEngine;
 import ParticleEngine.Visual.ParticleDrawable;
+import ParticleEngine.ParticleRunner;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PVector;
@@ -22,7 +23,7 @@ import java.util.zip.DeflaterOutputStream;
  * @see HeavyCache
  *
  */
-public class LightCache {
+public class LightCache implements ParticleRunner {
 
     public PVector[][] locs;
     private int[] colorCache;
@@ -64,6 +65,30 @@ public class LightCache {
                 p.print("\n");
                 p.flush();
             }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Save a light cache into a file and compress it. This will greatly reduce file size, but will take longer to save and load
+     * @param path where to save
+     * @see LightCache#saveFile(String)
+     */
+    public final void saveFileCompressed(String path){
+        try {
+            OutputStream o = p.createOutput(path);
+            PrintWriter p = new PrintWriter(o);
+            p.println(locs.length);
+            for (PVector[] Locs : locs) {
+
+                for (PVector l : Locs) {
+                    p.print(Compressor.compress(l)+"%");
+                }
+                p.print("\n");
+                p.flush();
+            }
             Compressor.compressFile(this.p.sketchPath()+"/"+path);
         }catch(Exception e){
             e.printStackTrace();
@@ -71,11 +96,11 @@ public class LightCache {
     }
 
     /**
-     * Load from a file
+     * Load from a file that has been compressed
      * @param path path to file
-     * @see LightCache#saveFile(String)
+     * @see LightCache#saveFileCompressed(String)
      */
-    public final void loadFromFile(String path){
+    public final void loadFromFileCompressed(String path){
         try{
 
             Compressor.decompressFile(this.p.sketchPath()+"/"+path);
@@ -104,6 +129,38 @@ public class LightCache {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     * @param path
+     */
+    public final void loadFromFile(String path){
+        try{
+
+            BufferedReader reader = p.createReader(path);
+            locs = new PVector[Integer.valueOf(reader.readLine())][];
+            String line;
+            int i = 0;
+            while ((line = reader.readLine()) != null) {
+                line = line.replaceAll(" ", "");
+                String[] vecs = line.split("%");
+                locs[i] = new PVector[vecs.length];
+                int j = 0;
+                for(String vec : vecs){
+                    String[] coords = vec.split(",");
+                    if(coords.length<2)continue;
+                    locs[i][j] = Compressor.decompress(vec);
+                    j++;
+                }
+                i++;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     /**
@@ -244,4 +301,15 @@ public class LightCache {
         this.colorCache = null;
 
     }
+
+    @Override
+    public void run(){
+        update();
+    }
+
+    @Override
+    public void setOrigin(int x, int y){
+
+    }
+
 }

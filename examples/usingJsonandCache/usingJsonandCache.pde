@@ -12,17 +12,14 @@ LightCache c1;
 void setup(){
 
   size(700,700);
-  ParticleDrawable dr = new ParticleDrawable(this, createShape(RECT, 5,5,5,5));
-  ParticleLifeEffect[] le = {ParticleLifeEffect.Negativealpha};
+  ParticleDrawable dr = new ParticleDrawable(this, Shape.Ellipse, 10,10);
+  ParticleLifeEffect[] le = {ParticleLifeEffect.Negativealpha, ParticleLifeEffect.Negativered};
   dr.setLifeEffect(le);
-  dr.fill(color(255,255,255));
-  dr.stroke(color(0,0,0));
+  dr.fill(color(255,55,2));
+  dr.stroke(color(255,255,255,0));
   pe = new ParticleEngine(this);
   pe.setup(loadJSONObject("data.json"),dr);
   pe.activate();
-  c1 = new LightCache(this);
-  c1.createFromEngine(pe, 255);
-  c1.playAt(width/2,height/2);
   println("caching finished");
 }
 
@@ -30,6 +27,6 @@ void setup(){
 void draw(){
   
   background(0);
-  c1.update();
+  pe.update();
   
 }

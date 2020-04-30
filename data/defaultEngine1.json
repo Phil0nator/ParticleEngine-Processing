@@ -1,0 +1,22 @@
+{
+
+  "setup":{
+
+    "behaviors":["Normal_Physics"],
+    "interactions":["Particle_Window_Collision"],
+    "gentype": "OnEvent",
+    "number": -1
+  },
+  "args":{
+
+    "initial":"Explosive",
+    "initialArg":50,
+    "origin":[0,0],
+    "speed": 0.1,
+    "bounds":[500,500],
+    "maxlife":100,
+    "RND":10
+  }
+
+
+}

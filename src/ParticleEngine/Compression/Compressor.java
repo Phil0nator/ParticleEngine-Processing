@@ -10,9 +10,16 @@ import java.util.Base64;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
+/**
+ * A collection of methods for compression and saving data
+ */
 public final class Compressor {
 
-
+    /**
+     * Turn a PVector into a small string
+     * @param p vector
+     * @return small string
+     */
     public static String compress(PVector p){
         String out = "";
         out+=convertBase64((int)p.x)+",";
@@ -21,6 +28,11 @@ public final class Compressor {
         return out;
     }
 
+    /**
+     * Turn a small PVector string into a PVector
+     * @param s string
+     * @return PVector
+     */
     public static PVector decompress(String s){
         PVector out = new PVector();
         String[] coords = s.split(",");
@@ -47,6 +59,10 @@ public final class Compressor {
 
     }
 
+    /**
+     * Compress the contents of a file and overwrite.
+     * @param path file
+     */
     public static void compressFile(String path){
         try {
             //Assign the original file : file to
@@ -77,6 +93,10 @@ public final class Compressor {
         }
     }
 
+    /**
+     * Decompress contents of a file and overwrite.
+     * @param path file
+     */
     public static void decompressFile(String path){
 
         try {

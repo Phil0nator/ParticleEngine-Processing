@@ -10,10 +10,13 @@ import processing.core.PVector;
 import static java.lang.Math.random;
 import static processing.core.PApplet.*;
 
+/**
+ * The particle class is used internally and doesn't need to be referenced unless you are
+ * creating custom behaviors or interactions.
+ */
 public class Particle {
 
-    private final int PTV = 5;
-
+    private final int PTV = 15;
     PApplet applet;
     public ParticleEngine parent;
     float acceloration = 1.f;
@@ -23,11 +26,18 @@ public class Particle {
     public float mapfac = 5.f;
     public int life = 0;
     private boolean nobounce = false;
-    public int mass = 5;
+    public float mass = 5;
     public int index = 0;
 
 
-
+    /**
+     * Constructor
+     * @param a applet
+     * @param x coord
+     * @param y coord
+     * @param velx non-normalized velocity on the x axis
+     * @param vely non-normalized velocity on the y axis
+     */
     public Particle(PApplet a, int x, int y, float velx, float vely){
         loc = new PVector(x,y);
         vel = new PVector(velx,vely);
@@ -39,14 +49,27 @@ public class Particle {
         life++;
     }
 
+    /**
+     * Limit the velocity so particles don't go too fast
+     */
     public void constrainVelocity(){
         vel = new PVector(constrain(vel.x,-PTV,PTV),constrain(vel.y,-PTV,PTV));
     }
 
+    /**
+     * Apply the speed field
+     * @param f speed float
+     * @see ParticleEngine#setSpeedFactor(float)
+     */
     public void applySpeedFactor(float f){
         acceloration=f;
     }
 
+    /**
+     * Create the random noise difference for the particle
+     * @param r RND
+     * @see ParticleEngine#setRandomNoiseDifferencial(float)
+     */
     public void createRandomSeed(float r){
         randomNoiseSeed = applet.random(0,r);
     }
@@ -109,6 +132,14 @@ public class Particle {
         }
     }
 
+    /**
+     * Update the particle for caching (excludes drawing)
+     * @param behaviors behaviors
+     * @param is interactions
+     * @return new location
+     * @see Particle#update(ParticleBehavior[], ParticleInteraction[])
+     * @see ParticleEngine.caches.LightCache
+     */
     public final PVector updateforcache(ParticleBehavior[] behaviors, ParticleInteraction[] is){
         try {
             applyBehaviors(behaviors);
@@ -121,6 +152,11 @@ public class Particle {
         return new PVector(-1,-1);
     }
 
+    /**
+     * Frame by frame update
+     * @param behaviors behaviors
+     * @param is interactions
+     */
     public final void update(ParticleBehavior[] behaviors, ParticleInteraction[] is){
         try {
             applyBehaviors(behaviors);
@@ -131,13 +167,13 @@ public class Particle {
         }
     }
 
-    public final void applyInteractions(ParticleInteraction[] is){
+    private void applyInteractions(ParticleInteraction[] is){
         for(ParticleInteraction i : is){
             applyInteraction(i);
         }
     }
 
-    public void applyInteraction(ParticleInteraction i){
+    private void applyInteraction(ParticleInteraction i){
         switch (i){
             case None:
                 return;

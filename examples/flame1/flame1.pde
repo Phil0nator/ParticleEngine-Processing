@@ -21,7 +21,7 @@ void setup(){
   pe.setup(loadJSONObject("data.json"),dr);
   pe.activate();
   lc = new LightCache(this);
-  lc.createFromEngine(pe,5000);
+  lc.createFromEngineVerbose(pe,60);
 
   println("caching finished");
 }
