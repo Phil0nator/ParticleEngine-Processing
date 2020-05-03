@@ -24,7 +24,7 @@ public class ColorKeyframe {
     public int[] cache;
 
 
-    public final Keyframe parseKeyframe(JSONObject json, PApplet parent){
+    private final Keyframe parseKeyframe(JSONObject json, PApplet parent){
         JSONArray c = json.getJSONArray("c");
         int color = parent.color(c.getInt(0),c.getInt(1),c.getInt(2));
         int frame = json.getInt("f");
@@ -32,6 +32,29 @@ public class ColorKeyframe {
 
     }
 
+    /**
+     * Load keyframe data from a json file
+     *
+     * Format:
+     *
+     * {
+     *
+     *  "frames":[
+     *      {"c":[r,g,b],"f":frame},
+     *      {"c":[r,g,b],"f":frame}
+     *  ]
+     *
+     * }
+     *
+     *
+     * @param parent PApplet
+     * @param path json file
+     *
+     *
+     *
+     *
+     *
+     */
     public final void loadKeyframes(PApplet parent, String path){
         JSONObject json = parent.loadJSONObject(path);
         JSONArray frames = json.getJSONArray("frames");
@@ -44,7 +67,7 @@ public class ColorKeyframe {
         keyframes.add(new Keyframe(color,frame));
     }
 
-    public final void cacheFrames(PApplet parent){
+    private final void cacheFrames(PApplet parent){
         int maxframe = keyframes.get(keyframes.size()-1).frame;
         int minframe = keyframes.get(0).frame;
         int framescached = 0;

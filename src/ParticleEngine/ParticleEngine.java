@@ -2,6 +2,7 @@ package ParticleEngine;
 
 
 import ParticleEngine.Behavior.*;
+import ParticleEngine.Exceptions.InvalidJSONException;
 import ParticleEngine.Particle.Particle;
 import ParticleEngine.Visual.ParticleDrawable;
 import processing.core.*;
@@ -143,8 +144,9 @@ public class ParticleEngine implements ParticleRunner {
 	 * @see ParticleEngine#setup(ParticleBehavior[], ParticleInteraction[], GenerationType, int, ParticleDrawable)
 	 * @see ParticleDrawable
 	 * @see ParticleEngine
+	 * @see InvalidJSONException
 	 */
-	public final void setup(JSONObject params, ParticleDrawable dr){
+	public final void setup(JSONObject params, ParticleDrawable dr)throws InvalidJSONException{
 		try {
 			JSONObject set = params.getJSONObject("setup");
 			JSONArray pre_b = set.getJSONArray("behaviors");
@@ -203,8 +205,7 @@ public class ParticleEngine implements ParticleRunner {
 				setParticlemass(args.getFloat("particleMass"));
 			}
 		}catch (Exception e){
-			e.printStackTrace();
-			exit(404);
+			throw new InvalidJSONException(e.getLocalizedMessage());
 		}
 		this.drawer = dr;
 		return;
