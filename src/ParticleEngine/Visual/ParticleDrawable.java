@@ -46,6 +46,7 @@ public class ParticleDrawable {
     float ogg;
     float ogb;
     int perimc;
+    ColorKeyframe keyframes = null;
 
     public int w;
     public int h;
@@ -68,7 +69,6 @@ public class ParticleDrawable {
         w=p1;
         h=p2;
     }
-
     /**
      * A constructor for a ParticleDrawable using an image
      * @param p parent
@@ -181,6 +181,12 @@ public class ParticleDrawable {
                 c = parent.color(parent.noise(200+x*.02f,200+y*.02f)*255,parent.noise(100+x*.02f,100+y*.02f)*255,parent.noise(x*.02f,y*.02f)*255,parent.alpha(c));
                 break;
         }
+    }
+
+    private final void applyKeyframes(){
+
+
+
     }
 
     /**
@@ -302,6 +308,11 @@ public class ParticleDrawable {
         }
 
 
+    }
+
+
+    public void addKeyframes(ColorKeyframe keyframes){
+        this.keyframes=keyframes;
     }
 
 }

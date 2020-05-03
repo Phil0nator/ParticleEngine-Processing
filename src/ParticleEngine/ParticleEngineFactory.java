@@ -67,7 +67,18 @@ public class ParticleEngineFactory {
         return pe;
     }
 
+    public final ParticleEngine getSimpleTrail(){
 
+        ParticleEngine pe = new ParticleEngine(parent);
+        ParticleDrawable dr = new ParticleDrawable(parent, Shape.Rect, 10,10);
+        ParticleLifeEffect[] le = {ParticleLifeEffect.Negativealpha};
+        dr.setLifeEffect(le);
+        dr.fill(parent.color(100,100,255));
+        dr.stroke(parent.color(255,255,255,0));
+        pe.setup(parent.loadJSONObject("trail1.json"), dr);
+        return pe;
+
+    }
 
 
 }

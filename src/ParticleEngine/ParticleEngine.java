@@ -410,6 +410,20 @@ public class ParticleEngine implements ParticleRunner {
 	}
 
 	/**
+	 * Stop the engine from running, even if update() is called
+	 */
+	public final void deActivate(){
+		activated = false;
+	}
+
+	/**
+	 * Stop the engine from running, even if update is called
+	 */
+	public final void stop(){
+		deActivate();
+	}
+
+	/**
 	 * Clear existing particles and start the engine again
 	 */
 	public final void reActivate(){

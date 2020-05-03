@@ -1,0 +1,23 @@
+{
+
+  "setup":{
+
+    "behaviors":["Particle_Smooth_Random"],
+    "interactions":["Particle_Window_Collision"],
+    "gentype": "OverTime",
+    "number": -1
+  },
+  "args":{
+
+    "initial":"Static",
+    "initialArg":50,
+    "origin":[0,0],
+    "speed": 0.1,
+    "bounds":[500,500],
+    "maxlife":255,
+    "RND":10,
+    "APF": 1
+  }
+
+
+}

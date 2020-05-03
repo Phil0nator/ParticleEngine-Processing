@@ -10,7 +10,7 @@ void setup(){
 
   size(500,500);
   ParticleEngineFactory pef = new ParticleEngineFactory(this);
-  pe = pef.getSlideEffectA();
+  pe = pef.getSimpleTrail();
   pe.activate();
 }
 

@@ -65,4 +65,9 @@ public enum ParticleBehavior {
      */
     Normal_Physics_NoBounce,
 
+    /**
+     * Particles follow a single velocity with random variation.
+     */
+    RandomlyVarying_Velocity,
+
 }

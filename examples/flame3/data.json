@@ -1,0 +1,24 @@
+{
+
+"setup":{
+
+	"behaviors":["Particle_Smooth_Random"],
+	"interactions":[None],
+	"gentype": "OverTime",
+	"number": 10000
+},
+"args":{
+
+	"initial":"RandomlyVarying_IV",
+	"initialArg":10,
+	"origin":[350,350],
+	"speed":.1,
+	"bounds":[700,700],
+	"maxlife":255,
+	"RND":50,
+	"APF":50,
+	"IV":[0,-20]
+}
+
+
+}
