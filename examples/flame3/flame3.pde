@@ -46,10 +46,6 @@ void draw(){
   }catch(Exception e){
     e.printStackTrace();
   }
-  saveFrame("tmp/frame######.png");
-  if(frameCount > 600){
-    exit();
-  }
   
   
 }
