@@ -14,7 +14,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -79,7 +79,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -96,73 +95,21 @@
             <path>
               <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="distribution" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngineProcessing-1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Behavior" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="caches" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Compression" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Particle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Visual" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="Visual" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
+              <item name="distribution" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngineProcessing-1" type="462c0819:PsiDirectoryNode" />
+              <item name="download" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -210,7 +157,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15138593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15298508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -219,7 +166,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -660,6 +607,11 @@
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distribution/ParticleEngineProcessing-1/download/ParticleEngineProcessing.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1121" />
       </provider>
     </entry>
   </component>
