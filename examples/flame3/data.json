@@ -11,9 +11,9 @@
 
 	"initial":"RandomlyVarying_IV",
 	"initialArg":10,
-	"origin":[350,350],
+	"origin":[250,250],
 	"speed":.1,
-	"bounds":[700,700],
+	"bounds":[500,500],
 	"maxlife":255,
 	"RND":50,
 	"APF":50,

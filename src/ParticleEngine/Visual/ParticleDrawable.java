@@ -197,9 +197,15 @@ public class ParticleDrawable {
      */
     public void draw(int x, int y, int l){
         if(parent.alpha(c)==0){return;}
+        if(this.keyframes!=null){
+            this.c = keyframes.getColorAt(l);
+        }
         for(ParticleLifeEffect p: plf){
             applyLE(l, p,x,y);
         }
+
+
+
 
         if(img!=null){
             parent.tint(c);
@@ -268,6 +274,9 @@ public class ParticleDrawable {
         int[] out = new int[frames];
         for(int i = 0 ; i < frames;i++){
             out[i] = c;
+            if(this.keyframes!=null){
+                this.c = keyframes.getColorAt(i);
+            }
             for(ParticleLifeEffect p: plf){
                 applyLE(i, p,0,0);
             }

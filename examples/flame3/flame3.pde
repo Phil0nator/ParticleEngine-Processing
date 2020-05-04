@@ -11,14 +11,24 @@ LightCache lc;
 
 void setup(){
 
-  size(700,700, P2D);
-  ParticleDrawable dr = new ParticleDrawable(this, Shape.Ellipse, 2,2);
-  ParticleLifeEffect[] le = {ParticleLifeEffect.Negativealpha, ParticleLifeEffect.Negativeblue, ParticleLifeEffect.Positivered, ParticleLifeEffect.Negativegreen};
+  size(500,500);
+  ParticleDrawable dr = new ParticleDrawable(this, Shape.Ellipse, 1,1);
+  ParticleLifeEffect[] le = {};
   dr.setLifeEffect(le);
   dr.fill(color(255,100,100));
   dr.stroke(color(255,255,255,0));
   pe = new ParticleEngine(this);
-  pe.setup(loadJSONObject("data.json"),dr);
+  ColorKeyframe keyframes = new ColorKeyframe();
+  keyframes.loadKeyframes(this, "color.json");
+  for(int i = 0 ; i < keyframes.cache.length;i++){
+    println(red(keyframes.cache[i]),green(keyframes.cache[i]), blue(keyframes.cache[i]), alpha(keyframes.cache[i]));
+  }
+  dr.addKeyframes(keyframes);
+  try{
+    pe.setup(loadJSONObject("data.json"),dr);
+  }catch(Exception e){
+    e.printStackTrace();
+  }
   pe.activate();
   //lc = new LightCache(this);
   //lc.createFromEngine(pe,5000);
@@ -29,17 +39,17 @@ void setup(){
 
 void draw(){
   
-  background(0);
+  background(0,0,0,200);
   
   try{
     pe.update();
   }catch(Exception e){
     e.printStackTrace();
   }
-  
-  saveFrame("tmp/frame#######.png");
+  saveFrame("tmp/frame######.png");
   if(frameCount > 600){
     exit();
   }
+  
   
 }

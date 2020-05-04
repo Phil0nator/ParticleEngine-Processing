@@ -31,7 +31,11 @@ public class ParticleEngineFactory {
         dr.setLifeEffect(le);
         dr.fill(parent.color(100,200,255));
         dr.stroke(parent.color(255,255,255,0));
-        out.setup(parent.loadJSONObject("defaultEngine1.json"),dr);
+        try {
+            out.setup(parent.loadJSONObject("defaultEngine1.json"), dr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         out.setBounds(parent.width,parent.height);
         return out;
     }
@@ -47,7 +51,11 @@ public class ParticleEngineFactory {
         dr.setLifeEffect(le);
         dr.fill(parent.color(255,100,100));
         dr.stroke(parent.color(255,255,255,0));
-        out.setup(parent.loadJSONObject("slideEffect1.json"),dr);
+        try {
+            out.setup(parent.loadJSONObject("slideEffect1.json"), dr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         out.setBounds(parent.width,parent.height);
         return out;
     }
@@ -63,7 +71,11 @@ public class ParticleEngineFactory {
         dr.setLifeEffect(le);
         dr.fill(parent.color(255,55,2));
         dr.stroke(parent.color(255,255,255,0));
-        pe.setup(parent.loadJSONObject("data.json"),dr);
+        try {
+            pe.setup(parent.loadJSONObject("data.json"), dr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return pe;
     }
 
@@ -75,7 +87,11 @@ public class ParticleEngineFactory {
         dr.setLifeEffect(le);
         dr.fill(parent.color(100,100,255));
         dr.stroke(parent.color(255,255,255,0));
-        pe.setup(parent.loadJSONObject("trail1.json"), dr);
+        try {
+            pe.setup(parent.loadJSONObject("trail1.json"), dr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return pe;
 
     }

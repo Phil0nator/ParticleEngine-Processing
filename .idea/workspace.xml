@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="729">
+              <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -27,20 +27,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
+            <state relative-caret-position="423">
+              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#Keyframe#0;class#ColorKeyframe#0" />
-                <element signature="e#218#228#0" expanded="true" />
                 <element signature="method#parseKeyframe#0;class#ColorKeyframe#0" />
-                <element signature="method#loadKeyframes#0;class#ColorKeyframe#0" />
-                <element signature="e#1228#1229#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
                 <element signature="method#cacheFrames#0;class#ColorKeyframe#0" />
+                <element signature="method#getColorAt#0;class#ColorKeyframe#0" />
               </folding>
             </state>
           </provider>
@@ -49,13 +46,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
+            <state relative-caret-position="3483">
               <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2006#2030#0" expanded="true" />
-                <element signature="e#9523#10891#0" />
-                <element signature="e#11488#12152#0" />
               </folding>
             </state>
           </provider>
@@ -64,22 +58,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+            <state relative-caret-position="432">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#134#135#0" expanded="true" />
-                <element signature="e#154#155#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="187" selection-start-line="187" selection-end-line="187" />
+            <state relative-caret-position="483">
+              <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
@@ -88,8 +80,9 @@
                 <element signature="method#fill#0;class#ParticleDrawable#0" />
                 <element signature="method#applyLE#0;class#ParticleDrawable#0" />
                 <element signature="method#draw#1;class#ParticleDrawable#0" />
-                <element signature="method#getColorCache#0;class#ParticleDrawable#0" />
                 <element signature="method#drawCached#0;class#ParticleDrawable#0" />
+                <element signature="e#8432#8433#0" expanded="true" />
+                <element signature="e#8472#8473#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,12 +132,12 @@
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java" />
         <option value="$PROJECT_DIR$/data/trail1.json" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/ParticleBehavior.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java" />
       </list>
     </option>
   </component>
@@ -236,8 +229,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15138593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -605,16 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/ParticleBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
@@ -625,10 +609,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3483">
+          <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#Keyframe#0;class#ColorKeyframe#0" />
+            <element signature="method#parseKeyframe#0;class#ColorKeyframe#0" />
+            <element signature="method#cacheFrames#0;class#ColorKeyframe#0" />
+            <element signature="method#getColorAt#0;class#ColorKeyframe#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        <state relative-caret-position="483">
+          <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
@@ -637,50 +665,9 @@
             <element signature="method#fill#0;class#ParticleDrawable#0" />
             <element signature="method#applyLE#0;class#ParticleDrawable#0" />
             <element signature="method#draw#1;class#ParticleDrawable#0" />
-            <element signature="method#getColorCache#0;class#ParticleDrawable#0" />
             <element signature="method#drawCached#0;class#ParticleDrawable#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2006#2030#0" expanded="true" />
-            <element signature="e#9523#10891#0" />
-            <element signature="e#11488#12152#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#134#135#0" expanded="true" />
-            <element signature="e#154#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#Keyframe#0;class#ColorKeyframe#0" />
-            <element signature="e#218#228#0" expanded="true" />
-            <element signature="method#parseKeyframe#0;class#ColorKeyframe#0" />
-            <element signature="method#loadKeyframes#0;class#ColorKeyframe#0" />
-            <element signature="e#1228#1229#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
-            <element signature="method#cacheFrames#0;class#ColorKeyframe#0" />
+            <element signature="e#8432#8433#0" expanded="true" />
+            <element signature="e#8472#8473#0" expanded="true" />
           </folding>
         </state>
       </provider>

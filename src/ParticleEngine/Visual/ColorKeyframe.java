@@ -7,6 +7,17 @@ import processing.data.JSONObject;
 import java.security.Key;
 import java.util.ArrayList;
 
+/**
+ * The ColorKeyframe class allows you to specify how the colors of particles should change over time.
+ * The best way to create keyframes is by writing them out into JSON, and using loadKeyframes()
+ * @see ColorKeyframe#loadKeyframes(PApplet, String)
+ *
+ * However, you can also manually push new keyframes in your java code using pushKeyframe()
+ * @see ColorKeyframe#pushKeyframe(int, int)
+ * Be aware that with this option you will have to manually call cacheFrames() to collect the color data.
+ *
+ *
+ */
 public class ColorKeyframe {
 
     class Keyframe{
@@ -61,13 +72,21 @@ public class ColorKeyframe {
         for(int i = 0 ; i < frames.size();i++){
             keyframes.add(parseKeyframe(frames.getJSONObject(i),parent));
         }
+        cacheFrames(parent);
     }
 
+    /**
+     * Push a new keyframe to the list.
+     * Be aware that you will have to manually call cacheFrames() to collect the color data.
+     * @param color the color of the keyframe
+     * @param frame the frame number
+     * @see ColorKeyframe#cacheFrames(PApplet)
+     */
     public final void pushKeyframe(int color, int frame){
         keyframes.add(new Keyframe(color,frame));
     }
 
-    private final void cacheFrames(PApplet parent){
+    public final void cacheFrames(PApplet parent){
         int maxframe = keyframes.get(keyframes.size()-1).frame;
         int minframe = keyframes.get(0).frame;
         int framescached = 0;
@@ -76,7 +95,7 @@ public class ColorKeyframe {
             cache[i] = parent.color(0);
             framescached++;
         }
-        for(int i = 0;i < keyframes.size();i++){
+        for(int i = 0;i < keyframes.size()-1;i++){
             Keyframe topframe = keyframes.get(i+1);
             Keyframe botframe = keyframes.get(i);
             int framedist = topframe.frame - botframe.frame;
@@ -98,5 +117,11 @@ public class ColorKeyframe {
         }
     }
 
+    public final int getColorAt(int frame){
+        if(frame < cache.length){
+            return cache[frame];
+        }
+        return cache[cache.length-1];
+    }
 
 }
