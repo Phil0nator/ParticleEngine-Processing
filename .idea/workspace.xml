@@ -18,26 +18,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+            <state relative-caret-position="416">
+              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#Keyframe#0;class#ColorKeyframe#0" />
-                <element signature="method#parseKeyframe#0;class#ColorKeyframe#0" />
-                <element signature="method#cacheFrames#0;class#ColorKeyframe#0" />
-                <element signature="method#getColorAt#0;class#ColorKeyframe#0" />
               </folding>
             </state>
           </provider>
@@ -46,43 +30,42 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3483">
-              <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+            <state relative-caret-position="-7671">
+              <caret line="152" column="7" lean-forward="true" selection-start-line="152" selection-start-column="7" selection-end-line="152" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#12622#12623#0" expanded="true" />
+                <element signature="e#12645#12646#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java">
+        <entry file="file://$PROJECT_DIR$/resources/library.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="729">
+              <caret line="27" column="55" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
+        <entry file="file://$PROJECT_DIR$/resources/build.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
+            <state relative-caret-position="621">
+              <caret line="110" column="59" selection-start-line="110" selection-start-column="59" selection-end-line="110" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
-                <element signature="method#ParticleDrawable#2;class#ParticleDrawable#0" />
-                <element signature="method#setParent#0;class#ParticleDrawable#0" />
-                <element signature="method#fill#0;class#ParticleDrawable#0" />
-                <element signature="method#applyLE#0;class#ParticleDrawable#0" />
-                <element signature="method#draw#1;class#ParticleDrawable#0" />
-                <element signature="method#drawCached#0;class#ParticleDrawable#0" />
-                <element signature="e#8432#8433#0" expanded="true" />
-                <element signature="e#8472#8473#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/VisualType.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/PrimitiveShapeType.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/properties/PrimitiveShapeType.java" />
-        <option value="$PROJECT_DIR$/resources/build.properties" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/InitialBehavior.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/CustomParticleDraw.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/GenerationType.java" />
@@ -128,16 +110,18 @@
         <option value="$PROJECT_DIR$/data/explosion1.json" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleRunner.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/caches/LightCache.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleBehavior.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java" />
         <option value="$PROJECT_DIR$/data/trail1.json" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/ParticleBehavior.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java" />
-        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java" />
         <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleBehavior.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java" />
+        <option value="$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java" />
+        <option value="$PROJECT_DIR$/resources/library.properties" />
+        <option value="$PROJECT_DIR$/resources/build.properties" />
       </list>
     </option>
   </component>
@@ -164,6 +148,16 @@
             <path>
               <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="distribution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -171,6 +165,41 @@
               <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="Behavior" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="caches" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="Compression" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="Particle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
@@ -178,6 +207,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
               <item name="Visual" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="processing-library-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParticleEngineProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ParticleEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="Visual" type="462c0819:PsiDirectoryNode" />
+              <item name="properties" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,7 +268,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15138593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15138593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -368,18 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/library.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-199" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/build.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="27" column="75" lean-forward="true" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/README">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -451,26 +476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -549,36 +554,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-367">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/CustomParticleDraw.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1528">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Particle#0;class#Particle#0" />
-            <element signature="method#draw#0;class#Particle#0" />
-            <element signature="method#normal#0;class#Particle#0" />
-            <element signature="method#applyBehavior#0;class#Particle#0" />
-            <element signature="method#applyBehaviors#0;class#Particle#0" />
-            <element signature="method#updateforcache#0;class#Particle#0" />
-            <element signature="method#update#0;class#Particle#0" />
-            <element signature="method#applyInteractions#0;class#Particle#0" />
-            <element signature="method#applyInteraction#0;class#Particle#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -609,16 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3483">
-          <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Exceptions/InvalidJSONException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -629,20 +598,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+        <state relative-caret-position="-1569">
+          <caret line="67" column="14" lean-forward="true" selection-start-line="67" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
+            <element signature="method#ParticleDrawable#2;class#ParticleDrawable#0" />
+            <element signature="method#setParent#0;class#ParticleDrawable#0" />
+            <element signature="method#fill#0;class#ParticleDrawable#0" />
+            <element signature="method#applyLE#0;class#ParticleDrawable#0" />
+            <element signature="method#draw#0;class#ParticleDrawable#0" />
+            <element signature="method#draw#1;class#ParticleDrawable#0" />
+            <element signature="method#getColorCache#0;class#ParticleDrawable#0" />
+            <element signature="method#drawCached#0;class#ParticleDrawable#0" />
+            <element signature="e#8432#8433#0" expanded="true" />
+            <element signature="e#8472#8473#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ColorKeyframe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        <state relative-caret-position="-988">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Keyframe#0;class#ColorKeyframe#0" />
@@ -653,22 +633,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/ParticleDrawable.java">
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngineFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
+        <state relative-caret-position="416">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#ParticleDrawable#1;class#ParticleDrawable#0" />
-            <element signature="method#ParticleDrawable#2;class#ParticleDrawable#0" />
-            <element signature="method#setParent#0;class#ParticleDrawable#0" />
-            <element signature="method#fill#0;class#ParticleDrawable#0" />
-            <element signature="method#applyLE#0;class#ParticleDrawable#0" />
-            <element signature="method#draw#1;class#ParticleDrawable#0" />
-            <element signature="method#drawCached#0;class#ParticleDrawable#0" />
-            <element signature="e#8432#8433#0" expanded="true" />
-            <element signature="e#8472#8473#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Visual/properties/ParticleLifeEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2730" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Particle/Particle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Particle#0;class#Particle#0" />
+            <element signature="method#draw#0;class#Particle#0" />
+            <element signature="method#normal#0;class#Particle#0" />
+            <element signature="method#applyBehavior#0;class#Particle#0" />
+            <element signature="method#applyBehaviors#0;class#Particle#0" />
+            <element signature="method#updateforcache#0;class#Particle#0" />
+            <element signature="method#update#0;class#Particle#0" />
+            <element signature="method#applyInteractions#0;class#Particle#0" />
+            <element signature="method#applyInteraction#0;class#Particle#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/Behavior/CustomParticleInteracion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ParticleEngine/ParticleEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7671">
+          <caret line="152" column="7" lean-forward="true" selection-start-line="152" selection-start-column="7" selection-end-line="152" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12622#12623#0" expanded="true" />
+            <element signature="e#12645#12646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/library.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="27" column="55" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/build.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="110" column="59" selection-start-line="110" selection-start-column="59" selection-end-line="110" selection-end-column="59" />
         </state>
       </provider>
     </entry>

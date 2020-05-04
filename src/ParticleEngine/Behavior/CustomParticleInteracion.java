@@ -6,8 +6,10 @@ import ParticleEngine.Visual.ParticleDrawable;
 import processing.core.PApplet;
 
 /**
- * Use this interface to create custom interactions between particles
- * @see
+ * Use this interface to create custom interactions between particles outside of those provided
+ * @see ParticleInteraction
+ * @see Particle
+ *
  */
 @FunctionalInterface
 public interface CustomParticleInteracion {

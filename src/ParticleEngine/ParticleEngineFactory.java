@@ -7,7 +7,15 @@ import processing.core.PApplet;
 
 /**
  * A way to get quick access to simpler engines without too much setup.
- * Some quickstart methods
+ * Some quickstart methods.
+ *
+ *
+ * Any engine you get out of the factory can still be altered and tweaked before use.
+ * This means that the drawer for each engine will also still be able to be tweaked under the public field ParticleEngine.drawer
+ * @see ParticleEngine
+ * @see ParticleDrawable
+ * @see ParticleEngine#drawer
+ *
  */
 public class ParticleEngineFactory {
     /**
@@ -79,6 +87,10 @@ public class ParticleEngineFactory {
         return pe;
     }
 
+    /**
+     * Get a simple engine ideal for creating trail effects
+     * @return a particle engine
+     */
     public final ParticleEngine getSimpleTrail(){
 
         ParticleEngine pe = new ParticleEngine(parent);

@@ -20,8 +20,14 @@ public class Particle {
     PApplet applet;
     public ParticleEngine parent;
     float acceloration = 1.f;
-    PVector loc;
-    PVector vel;
+    /**
+     * Determines the particle's location
+     */
+    public PVector loc;
+    /**
+     * Determines the particles velocity (Not normalized)
+     */
+    public PVector vel;
     float randomNoiseSeed = 1;
     public float mapfac = 5.f;
     public int life = 0;

@@ -16,7 +16,9 @@ import java.util.ArrayList;
  * @see ColorKeyframe#pushKeyframe(int, int)
  * Be aware that with this option you will have to manually call cacheFrames() to collect the color data.
  *
- *
+ * ColorKeyframes should be applied to a ParticleDrawable object
+ * @see ParticleDrawable
+ * @see ParticleDrawable#addKeyframes(ColorKeyframe)
  */
 public class ColorKeyframe {
 

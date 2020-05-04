@@ -32,21 +32,27 @@ import static processing.core.PApplet.abs;
  * @see ParticleEngine.ParticleEngine
  * @see ParticleEngine.ParticleEngine#setup(ParticleBehavior[], ParticleInteraction[], GenerationType, int, ParticleDrawable)
  *
+ * You can define how colors will change either using keyframes, or ParticleLifeEffect enums
+ * @see ParticleLifeEffect
+ * @see ColorKeyframe
+ * @see ParticleDrawable#setLifeEffect(ParticleLifeEffect[])
+ * @see ParticleDrawable#addKeyframes(ColorKeyframe)
+ *
  */
 
 public class ParticleDrawable {
 
     public Shape shape;
-    PImage img;
-    CustomParticleDraw d;
-    ParticleLifeEffect[] plf = {};
-    PApplet parent;
-    int c;
-    float ogr;
-    float ogg;
-    float ogb;
-    int perimc;
-    ColorKeyframe keyframes = null;
+    private PImage img;
+    private CustomParticleDraw d;
+    private ParticleLifeEffect[] plf = {};
+    private PApplet parent;
+    private int c;
+    private float ogr;
+    private float ogg;
+    private float ogb;
+    private int perimc;
+    private ColorKeyframe keyframes = null;
 
     public int w;
     public int h;

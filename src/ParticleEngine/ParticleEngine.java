@@ -25,7 +25,8 @@ import static java.lang.System.exit;
  * @see ParticleInteraction
  * @see GenerationType
  *
- *
+ * All properties of a ParticleEngine can be set using a JSON file
+ * @see ParticleEngine#setup(JSONObject, ParticleDrawable)
  *
  */
 public class ParticleEngine implements ParticleRunner {
@@ -60,13 +61,17 @@ public class ParticleEngine implements ParticleRunner {
 	private ParticleInteraction[] interactions;
 
 
-
+	/**
+	 * This contains whatever drawable has been set.
+	 * You can use this field to change how particles are drawn.
+	 * @see ParticleDrawable
+	 */
 	public ParticleDrawable drawer;
 	private GenerationType gen;
 
 
 
-	public int particleMaxLife = 255;
+	private int particleMaxLife = 255;
 	private int count = 0;
 	public int[] bounds = {50,50};
 	private InitialBehavior initialBehavior = InitialBehavior.Static;
@@ -462,6 +467,12 @@ public class ParticleEngine implements ParticleRunner {
 
 	}
 
+	/**
+	 * Accessor method for the engine's state
+	 * @return if engine is active
+	 * @see ParticleEngine#activate()
+	 * @see ParticleEngine#deActivate()
+	 */
 	public final boolean isActivated(){
 		return activated;
 	}
@@ -483,7 +494,7 @@ public class ParticleEngine implements ParticleRunner {
 
 	/**
 	 * Used internally.
-	 * (EXPENSIVE)
+	 * (EXPENSIVE): depending on the number of frames and particles, this could cause you to run out of memory
 	 *
 	 * Used to generate the data used in a LightCache
 	 *
