@@ -1,0 +1,24 @@
+{
+
+"setup":{
+
+	"behaviors":["Normal_Physics"],
+	"interactions":[None],
+	"gentype": "AtOnce",
+	"number": 5
+},
+"args":{
+
+	"initial":"Explosive",
+	"initialArg":25,
+	"origin":[250,250],
+	"speed":.1,
+	"bounds":[500,500],
+	"maxlife":255,
+	"RND":50,
+	"APF":1,
+	"IV":[0,-20]
+}
+
+
+}

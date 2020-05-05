@@ -76,6 +76,9 @@ public class ParticleEngine implements ParticleRunner {
 	public int[] bounds = {50,50};
 	private InitialBehavior initialBehavior = InitialBehavior.Static;
 	private float initialBehaviorArg = 0;
+
+
+
 	private PVector origin = new PVector(0,0);
 	private boolean activated = false;
 	private PVector iv = new PVector(0,0);
@@ -85,6 +88,9 @@ public class ParticleEngine implements ParticleRunner {
 	private int amountPerFrame = 0;
 	private ArrayList<CustomParticleBehavior> customParticleBehaviors = new ArrayList<CustomParticleBehavior>(0);
 
+
+
+	private PVector trend = null;
 
 	private float particlemass = 10.0f;
 
@@ -306,6 +312,14 @@ public class ParticleEngine implements ParticleRunner {
 		this.drawer = drawer;
 	}
 
+	/**
+	 * Get the location considered to be the origin (center) by the engine
+	 * @return the origin
+	 * @see ParticleEngine#setOrigin(int, int)
+	 */
+	public PVector getOrigin() {
+		return origin;
+	}
 
 	/**
 	 * Set the amount of difference between particles following noise patterns.
@@ -354,6 +368,17 @@ public class ParticleEngine implements ParticleRunner {
 		amountPerFrame=amt;
 	}
 
+	/**
+	 * Set a trend path for particles to follow.
+	 * The vector must be normalized.
+	 *
+	 * The particles will pull towards the given vector, but will still move based on other behaviors.
+	 *
+	 * @param trend a normalized vector
+	 */
+	public final void setTrend(PVector trend) {
+		this.trend = trend;
+	}
 
 	private final int[] getcoords(){
 		int[] out = new int[2];
@@ -390,6 +415,7 @@ public class ParticleEngine implements ParticleRunner {
 				np = new Particle(parent,(int)origin.x,(int)origin.y,0,0);
 		}
 		np.parent = this;
+		np.trend=trend;
 		np.applySpeedFactor(particleSpeedFactor);
 		np.createRandomSeed(randomNoiseDifferencial);
 		np.mapfac = noiseMapFactor;
@@ -435,6 +461,35 @@ public class ParticleEngine implements ParticleRunner {
 	public final void reActivate(){
 		forceEmpty();
 		activate();
+	}
+
+	final int updateForSystem(ParticleSystem sys){
+		int out = 0;
+		try {
+			if (!activated) return 0;
+			if (gen == GenerationType.OverTime) {
+				if (particles.size() < count||count == -1) {
+					out=amountPerFrame;
+				}
+			}
+
+			for (int i = 0 ; i < particles.size();i++) {
+				Particle p = particles.get(i);
+				p.updateforcache(behaviors, interactions);
+				if(particleMaxLife!=0) {
+					if (p.life > particleMaxLife) {
+						particles.set(i,null);
+						particles.remove(i);
+						sys.engines.remove(i);
+						i--;
+					}
+				}
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+		return out;
 	}
 
 	/**
@@ -547,4 +602,31 @@ public class ParticleEngine implements ParticleRunner {
 	public void run(){
 		update();
 	}
+
+	public final ParticleEngine copy(){
+
+		ParticleEngine out = new ParticleEngine(parent);
+		out.amountPerFrame=this.amountPerFrame;
+		out.customParticleBehaviors = new ArrayList<CustomParticleBehavior>(customParticleBehaviors);
+		out.drawer=drawer;
+		out.setParticleMaxLife(particleMaxLife);
+		out.setRandomNoiseDifferencial(randomNoiseDifferencial);
+		out.initialBehaviorArg = initialBehaviorArg;
+		out.initialBehavior = initialBehavior;
+		out.iv = iv.copy();
+		out.behaviors = behaviors;
+		out.particles = new ArrayList<Particle>(0);
+		out.interactions = interactions;
+		out.trend=trend.copy();
+		out.bounds=bounds;
+		out.origin=origin;
+		out.gen=gen;
+		out.setParticlemass(particlemass);
+		out.setSpeedFactor(particleSpeedFactor);
+
+
+		return out;
+
+	}
+
 }

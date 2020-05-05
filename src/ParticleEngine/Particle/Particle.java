@@ -19,6 +19,10 @@ public class Particle {
     private final int PTV = 15;
     PApplet applet;
     public ParticleEngine parent;
+    /**
+     * @see ParticleEngine#setTrend(PVector)
+     */
+    public PVector trend;
     float acceloration = 1.f;
     /**
      * Determines the particle's location
@@ -121,9 +125,14 @@ public class Particle {
                 vel.add(getNoiseX(),getNoiseY());
                 applyVelocity();
                 return;
-
             case Friction:
                 vel.mult(0.9f);
+                return;
+            case OrbitOrigin:
+
+                vel.sub(loc.copy().sub(parent.getOrigin()).div(25).mult(acceloration));
+
+                applyVelocity();
                 return;
 
             default:
@@ -136,6 +145,11 @@ public class Particle {
         for(ParticleBehavior b: behaviors){
             applyBehavior(b);
         }
+
+        if(trend!=null){
+            vel.add(trend.mult(acceloration));
+        }
+
     }
 
     /**
